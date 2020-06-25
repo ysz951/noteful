@@ -1,4 +1,8 @@
-.App {
+ul{
+  list-style: none;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +39,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

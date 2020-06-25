@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import HomePage from './HomePage/HomePage';
+import MainContent from './MainContent/MainContent'
+import STORY from './dummy-story'
+class App extends Component {
+  render(){
+    
+    const {folders,notes} = STORY;
+    console.log(STORY)
+    return (
+      <main className='App'>
+        <HomePage />
+        <MainContent notes={notes} folders={folders} currentFolder={folders[0].id}/>
+      </main>
+    );
+  }
 }
 
 export default App;
