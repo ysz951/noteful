@@ -7,10 +7,10 @@ class MainNote extends Component {
     };
 
     render(){
-        const {notes, currentFolder} = this.props;
+        const {notes, folderId, deleteNote} = this.props;
         return (
             <div className='mainNote'>
-                <MainNoteList notes={notes} currentFolder={currentFolder}/>
+                <MainNoteList notes={notes} folderId={folderId} deleteNote={deleteNote}/>
                 <p>Add note</p>
             </div>
         );

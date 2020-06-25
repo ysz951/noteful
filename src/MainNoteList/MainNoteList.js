@@ -6,15 +6,17 @@ class MainNoteList extends Component {
     };
 
     render(){
-        const {notes, currentFolder} = this.props;
-        const currentNote = notes.filter((note) => note.folderId === currentFolder)
+        const {notes, folderId, deleteNote} = this.props;
         return (
-            <div className='mainNoteList'>
-                <ul>
-                    {currentNote.map((note,i) => <MainNoteItem key={i} note={note}/>)}
+                <ul className='mainNoteList'>
+                    {notes.map((note,i) => folderId ? 
+                        note.folderId === folderId ? 
+                        <MainNoteItem key={i} note={note} deleteNote={deleteNote}/> : 
+                        "" : 
+                        <MainNoteItem key={i} note={note} deleteNote={deleteNote}/>)}
                 </ul>
                 
-            </div>
+
         );
     }
 }

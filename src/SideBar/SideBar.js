@@ -7,10 +7,10 @@ class SideBar extends Component {
     };
 
     render(){
-        const {folders} = this.props;
+        const {folders, folderId} = this.props;
         return (
             <div className='sideBar'>
-                <SideBarList folders={folders}/>
+                <SideBarList folders={folders} folderId={folderId}/>
                 <p>Add folder</p>
             </div>
         );

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './MainNoteItem.css';
-import { Route, Link } from 'react-router-dom';
+// import './MainNoteSelectedItem.css';
 
-class MainNoteItem extends Component {
+
+class MainNoteSelectedItem extends Component {
     static defaultProps = {
         deleteNode: () => {},
     };
@@ -11,11 +11,11 @@ class MainNoteItem extends Component {
         const {note, deleteNote}=this.props;
         
         return (
-            <li className="mainNoteItem">
+            <>
     
-                <Link to={`/note/${note.id}`}>
-                    <p>{note.name}</p>
-                </Link>
+
+                <p>{note.name}</p>
+
                 <p>{note.modified}</p>
                 <button 
                     onClick={() => deleteNote(note.id)}
@@ -23,9 +23,9 @@ class MainNoteItem extends Component {
                 >
                     delete
                 </button>
-            </li>
+            </>
         );
     }
 }
 
-export default MainNoteItem;
+export default MainNoteSelectedItem;

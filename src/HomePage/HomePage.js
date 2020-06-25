@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Route, Link } from 'react-router-dom';
 
 class HomePage extends Component {
     static defaultProps = {
@@ -9,7 +9,10 @@ class HomePage extends Component {
     render(){
         return (
             <div className='Home'>
-                <p>Home</p>
+                <Link to={`/`}>
+                    <p>Home</p>
+                </Link>
+                
             </div>
         );
     }
