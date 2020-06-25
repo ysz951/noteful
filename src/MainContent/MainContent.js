@@ -40,7 +40,7 @@ class MainContent extends Component {
                         const note= notes.find(item => item.id === routerProps.match.params.noteId);
                         const folder = folders.find(item => item.id === note.folderId);
                         
-                        return <SideBarSelectedList folder={folder} />
+                        return <SideBarSelectedList folder={folder}  history={routerProps.history}/>
                     }
                     }
                 />

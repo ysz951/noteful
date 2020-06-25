@@ -7,11 +7,20 @@ class MainNoteSelectedList extends Component {
 
     render(){
         const {note} = this.props;
+ 
         return (
-            <ul className='mainNoteList'>
-                <MainNoteSelectedItem note={note}/>
-                <li>{note.content}</li>
-            </ul>
+            <div className='mainNote'>
+                <ul className='mainNoteList'>
+                <li className="mainNoteItem">
+    
+
+                <p>{note.name}</p>
+
+                <p>{note.modified}</p>
+                </li>
+                    <li>{note.content}</li>
+                </ul>
+            </div>
         );
     }
 }

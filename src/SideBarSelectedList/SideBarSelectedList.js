@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import SideBarSelectedItem from '../SideBarSelectedItem/SideBarSelectedItem'
-
+import { Route, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 class SideBarSelectedList extends Component {
     static defaultProps = {
     };
 
     render(){
-        const {folder} = this.props;
+        const {folder, history} = this.props;
         return (
-            <div className='mainNoteList'>
-                <ul>
-                <SideBarSelectedItem folder={folder}/>
+            <div className='sideBar'>
+                <ul className="sideBarList">
+                    <SideBarSelectedItem folder={folder}/>
                 </ul>
+                <button onClick={() => history.goBack()}>back</button>
                 {/* <ul>
                     <MainNoteItem key={i} note={note} deleteNote={deleteNote}/>)
                 </ul>
@@ -22,4 +24,4 @@ class SideBarSelectedList extends Component {
     }
 }
 
-export default SideBarSelectedList;
+export default withRouter(SideBarSelectedList);

@@ -11,7 +11,7 @@ class MainNoteSelectedItem extends Component {
         const {note, deleteNote}=this.props;
         
         return (
-            <>
+            <li className="mainNoteItem">
     
 
                 <p>{note.name}</p>
@@ -23,7 +23,7 @@ class MainNoteSelectedItem extends Component {
                 >
                     delete
                 </button>
-            </>
+            </li>
         );
     }
 }

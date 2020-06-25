@@ -1,4 +1,12 @@
 .mainContent{
     display:flex;
-    justify-content: space-evenly;
+    justify-content: center;
+}
+
+.sideBar{
+    flex: 1
+}
+
+.mainNote{
+    flex: 1
 }
