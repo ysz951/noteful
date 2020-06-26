@@ -1,7 +1,51 @@
-ul{
-  list-style: none;
+.Home{
+  background-color: rgb(235, 217, 233);
+  height: 10vh;
 }
 
+.Home h1{
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+}
+
+ul{
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+p{
+  margin: 0;
+}
+
+button{
+  cursor: pointer;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:link {
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: rgba(51, 44, 44, 0.685);
+  
+}
+
+/* selected link */
+a:active {
+  color: black;
+}
 /* .App {
   text-align: center;
 }

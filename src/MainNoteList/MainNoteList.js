@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MainNoteItem from '../MainNoteItem/MainNoteItem'
+import './MainNoteList.css'
 
 class MainNoteList extends Component {
     static defaultProps = {
@@ -8,6 +9,7 @@ class MainNoteList extends Component {
     render(){
         const {notes, folderId, deleteNote} = this.props;
         return (
+            <main className='mainNote'>
                 <ul className='mainNoteList'>
                     {notes.map((note,i) => folderId ? 
                         note.folderId === folderId ? 
@@ -15,8 +17,8 @@ class MainNoteList extends Component {
                         "" : 
                         <MainNoteItem key={i} note={note} deleteNote={deleteNote}/>)}
                 </ul>
-                
-
+                <button className="addNote">Add note</button>
+            </main>
         );
     }
 }

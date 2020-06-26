@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import MainNoteSelectedItem from '../MainNoteSelectedItem/MainNoteSelectedItem'
+import './MainNoteSelectedList.css'
+// import MainNoteSelectedItem from '../MainNoteSelectedItem/MainNoteSelectedItem'
 
 class MainNoteSelectedList extends Component {
     static defaultProps = {
@@ -9,18 +10,19 @@ class MainNoteSelectedList extends Component {
         const {note} = this.props;
  
         return (
-            <div className='mainNote'>
+            <main className='mainNote'>
                 <ul className='mainNoteList'>
-                <li className="mainNoteItem">
-    
-
-                <p>{note.name}</p>
-
-                <p>{note.modified}</p>
-                </li>
-                    <li>{note.content}</li>
+                    {/* <MainNoteSelectedItem note={note}/> */}
+                    <li className="mainNoteItem">
+                        <div className="Note">
+                            <p className="noteName">{note.name}</p>
+                            <p>{note.modified}</p>
+                        </div>
+                        
+                    </li>
+                    <li className="NoteContent">{note.content}</li>
                 </ul>
-            </div>
+            </main>
         );
     }
 }

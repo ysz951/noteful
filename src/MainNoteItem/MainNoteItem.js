@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MainNoteItem.css';
-import { Route, Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class MainNoteItem extends Component {
     static defaultProps = {
@@ -9,20 +9,25 @@ class MainNoteItem extends Component {
     
     render(){
         const {note, deleteNote}=this.props;
-        
         return (
             <li className="mainNoteItem">
-    
-                <Link to={`/note/${note.id}`}>
-                    <p>{note.name}</p>
-                </Link>
-                <p>{note.modified}</p>
+                <div className="Note"> 
+                    <p className="noteName">
+                    <Link to={`/note/${note.id}`}>
+                        {note.name}
+                    </Link>
+                    </p>
+                    <p>{note.modified}</p>
+                    
+                </div>
+                <div className="Delete">
                 <button 
-                    onClick={() => deleteNote(note.id)}
-                    type='button'
-                >
-                    delete
-                </button>
+                        onClick={() => deleteNote(note.id)}
+                        type='button'
+                    >
+                        delete
+                    </button>
+                </div>
             </li>
         );
     }

@@ -1,12 +1,72 @@
 .mainContent{
     display:flex;
-    justify-content: center;
+    background-color: rgb(127, 156, 160);
+    margin-top: 0;
 }
 
 .sideBar{
-    flex: 1
+    width: 30%;
+    background-color: rgb(221, 179, 179);
+    min-height: 90vh;
+    padding-top: 15px;
 }
 
+.sideBarList li{
+    padding:10px 0;
+    margin-bottom:15px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.sideBarItem{
+    background-color: rgb(152, 148, 172);
+}
+
+.sideBarSelectedItem{
+    background-color: rgb(127, 156, 160);
+}
+
+
 .mainNote{
-    flex: 1
+    width: 50%;
+    padding-top: 10px;
+    min-height: 90vh;
+    padding-left:10px;
+}
+
+.mainNoteItem{
+    /* border: 1px solid black; */
+    color: black;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(124, 119, 92);
+}
+
+.Delete button{
+    height: 100%;
+}
+
+.Note{
+    /* display: flex; */
+    justify-content: space-between;
+    padding:10px 0;
+    
+}
+.noteName{
+    font-size: 24px;
+}
+
+.addNote{
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.addFolder{
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.NoteContent{
+    color: rgb(58, 50, 50);
+    /* background-color: rgb(43, 41, 41); */
 }

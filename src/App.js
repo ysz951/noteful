@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import {Link } from 'react-router-dom';
 import './App.css';
-import { Route, Link } from 'react-router-dom';
-import HomePage from './HomePage/HomePage';
 import MainContent from './MainContent/MainContent';
 import STORY from './dummy-story';
+
 class App extends Component {
   state = {
     folders: STORY.folders,
@@ -22,13 +22,18 @@ class App extends Component {
     // console.log(STORY);
     return (
       
-      <main className='App'>
-        <HomePage />
+      <div className='App'>
+        <div className='Home'>
+        <h1>
+            <Link to={`/`}>
+                Home
+            </Link>
+            </h1>
+        </div>
         <MainContent
               notes={notes} folders={folders} deleteNote={this.deleteNote}
         />
-        {/* <MainContent notes={notes} folders={folders} currentFolder={folders[0].id}/> */}
-      </main>
+      </div>
     );
   }
 }

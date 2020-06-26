@@ -10,12 +10,14 @@ class SideBarList extends Component {
         const {folders, folderId} = this.props;
         
         return (
+            <nav className='sideBar'>
                 <ul className="sideBarList">
                     {folders.map((folder, i) => 
                         folder.id === folderId ? <SideBarSelectedItem key={i} folder={folder}/> : <SideBarItem key={i} folder={folder}/>)
                     }
                 </ul>
-               
+                <button className="addFolder">Add folder</button>
+            </nav>
         );
     }
 }
