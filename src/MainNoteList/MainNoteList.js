@@ -4,6 +4,7 @@ import './MainNoteList.css'
 
 class MainNoteList extends Component {
     static defaultProps = {
+        notes: [],
     };
 
     render(){

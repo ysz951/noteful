@@ -3,7 +3,7 @@ import './sideBarItem.css'
 import {Link } from 'react-router-dom';
 class SideBarItem extends Component {
     static defaultProps = {
-        
+        folder: {},
     };
 
     render(){

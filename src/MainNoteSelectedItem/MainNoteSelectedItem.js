@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class MainNoteSelectedItem extends Component {
     static defaultProps = {
         deleteNode: () => {},
+        note: {},
     };
     
     render(){

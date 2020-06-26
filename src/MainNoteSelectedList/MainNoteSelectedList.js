@@ -4,6 +4,7 @@ import './MainNoteSelectedList.css'
 
 class MainNoteSelectedList extends Component {
     static defaultProps = {
+        note: {},
     };
 
     render(){

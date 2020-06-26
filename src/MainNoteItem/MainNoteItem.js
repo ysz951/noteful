@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 class MainNoteItem extends Component {
     static defaultProps = {
         deleteNode: () => {},
+        note: {}
     };
     
     render(){

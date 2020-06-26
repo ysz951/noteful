@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './SideBarSelectedItem.css'
 class SideBarSelectedItem extends Component {
     static defaultProps = {
-        
+        folder: {},
     };
 
     render(){
