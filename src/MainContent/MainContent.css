@@ -7,7 +7,7 @@
 .sideBar{
     width: 30%;
     background-color: rgb(221, 179, 179);
-    min-height: 90vh;
+    /* height: 80vh; */
     padding-top: 15px;
 }
 
@@ -30,7 +30,7 @@
 .mainNote{
     width: 50%;
     padding-top: 10px;
-    min-height: 90vh;
+    /* height: 80vh; */
     padding-left:10px;
 }
 
@@ -63,6 +63,10 @@
 }
 
 .addFolder{
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.goBack{
     margin-left: 50%;
     transform: translateX(-50%);
 }

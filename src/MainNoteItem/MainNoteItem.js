@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import './MainNoteItem.css';
 import {Link} from 'react-router-dom';
 
-class MainNoteItem extends Component {
-    static defaultProps = {
-        deleteNode: () => {},
-        note: {}
-    };
-    
-    render(){
-        const {note, deleteNote}=this.props;
+export default function MainNoteItem(props){
+
+        const {note, deleteNote}=props;
         return (
             <li className="mainNoteItem">
                 <div className="Note"> 
@@ -22,7 +17,7 @@ class MainNoteItem extends Component {
                     
                 </div>
                 <div className="Delete">
-                <button 
+                    <button 
                         onClick={() => deleteNote(note.id)}
                         type='button'
                     >
@@ -31,7 +26,10 @@ class MainNoteItem extends Component {
                 </div>
             </li>
         );
-    }
+    
 }
-
-export default MainNoteItem;
+MainNoteItem.defaultProps = {
+    note: {},
+    deleteNote: () => {},
+};
+// export default MainNoteItem;

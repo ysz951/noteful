@@ -12,7 +12,7 @@ class SideBarSelectedList extends Component {
                 <ul className="sideBarList">
                     <SideBarSelectedItem folder={folder}/>
                 </ul>
-                <button onClick={() => history.goBack()}>back</button>
+                <button className="goBack" onClick={() => history.goBack()}>back</button>
             </nav>
         );
     }
