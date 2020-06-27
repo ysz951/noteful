@@ -18,4 +18,4 @@ class SideBarSelectedList extends Component {
     }
 }
 
-export default withRouter(SideBarSelectedList);
+export default SideBarSelectedList;

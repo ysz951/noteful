@@ -12,7 +12,8 @@ class MainNoteSelectedList extends Component {
     // }
 
     goBack = () => {
-        this.props.history.push('/');
+        this.props.history.goBack();
+        // this.props.history.push('/');
     }
 
     render(){
