@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MainNoteSelectedList from './MainNoteSelectedList';
-
+import { BrowserRouter } from 'react-router-dom'
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<MainNoteSelectedList />, div);
+  ReactDOM.render(<BrowserRouter><MainNoteSelectedList /></BrowserRouter>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

@@ -38,4 +38,4 @@ MainNoteSelectedItem.defaultProps = {
     deleteNote: () => {},
 };
 
-export default withRouter(MainNoteSelectedItem);
+export default MainNoteSelectedItem;

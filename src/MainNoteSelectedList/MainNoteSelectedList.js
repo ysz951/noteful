@@ -40,4 +40,4 @@ class MainNoteSelectedList extends Component {
     }
 }
 
-export default withRouter(MainNoteSelectedList);
+export default MainNoteSelectedList;
