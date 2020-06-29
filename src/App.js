@@ -12,6 +12,12 @@ class App extends Component {
     error: null,
   }
   deleteNote = (noteId) => {
+    fetch(`http://localhost:9090/notes/${noteId}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
     const newNotes = this.state.notes.filter(note => note.id !== noteId);
     this.setState({
       notes: newNotes,

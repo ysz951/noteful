@@ -49,7 +49,10 @@
 
 .Delete button{
     height: 100%;
+    border: none;
+    background-color: rgb(174, 175, 182);
 }
+
 
 .Note{
     justify-content: space-between;
