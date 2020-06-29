@@ -1,22 +1,35 @@
 import React, { Component } from 'react';
+import './SideBarList.css'
 import SideBarItem from '../SideBarItem/SideBarItem'
 import SideBarSelectedItem from '../SideBarSelectedItem/SideBarSelectedItem'
+import FolderNoteContext from '../FolderNoteContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 class SideBarList extends Component {
     static defaultProps = {
-        folders: []
-    };
 
+    };
+    static contextType = FolderNoteContext;
     render(){
-        const {folders, folderId} = this.props;
-        
+        const {folderId} = this.props;
+        const {folders} = this.context
         return (
             <nav className='sideBar'>
                 <ul className="sideBarList">
                     {folders.map((folder, i) => 
-                        folder.id === folderId ? <SideBarSelectedItem key={i} folder={folder}/> : <SideBarItem key={i} folder={folder}/>)
+                        folder.id === folderId ? 
+                        <SideBarSelectedItem key={i} folder={folder}/> : 
+                        <SideBarItem key={i} folder={folder}/>
+                    )
                     }
                 </ul>
-                <button className="addFolder">Add folder</button>
+                {/* <FontAwesomeIcon className = "black" icon={faPlusSquare }/> */}
+                <button className="addFolder">
+                    <FontAwesomeIcon className="addFolderIcon"icon={faPlus }/>
+                    <br/>
+                    <span>Folder</span>
+                </button>
+                
             </nav>
         );
     }

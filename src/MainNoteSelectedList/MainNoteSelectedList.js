@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './MainNoteSelectedList.css'
 import MainNoteSelectedItem from '../MainNoteSelectedItem/MainNoteSelectedItem'
-import { withRouter } from 'react-router-dom';
+
 class MainNoteSelectedList extends Component {
     static defaultProps = {
         note: {},
@@ -17,25 +17,14 @@ class MainNoteSelectedList extends Component {
     }
 
     render(){
-        const {note, deleteNote, history} = this.props;
+        const {note} = this.props;
        
         return (
-            <main className="mainNote white">
+            <main className="mainNote">
                 <ul className='mainNoteList'>
-                    <MainNoteSelectedItem note={note} deleteNote={deleteNote} goBack={this.goBack}/>
-                    {/* <MainNoteSelectedItem note={note}/> */}
-                    {/* <li className="mainNoteItem">
-                        <div className="Note">
-                            <p className="noteName">{note.name}</p>
-                            <p>{note.modified}</p>
-                        </div>
-                        
-                    </li> */}
+                    <MainNoteSelectedItem note={note} goBack={this.goBack}/>
                     <li className="NoteContent">{note.content}</li>
                 </ul>
-                {/* <button type="button" onClick={() => {
-                    this.setState({class: this.state.class + " " + "white"})}}
-                    >change color</button> */}
             </main>
         );
     }

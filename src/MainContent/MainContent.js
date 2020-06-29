@@ -4,32 +4,30 @@ import SideBarList from '../SideBarList/SideBarList';
 import SideBarSelectedList from '../SideBarSelectedList/SideBarSelectedList';
 import MainNoteList from '../MainNoteList/MainNoteList';
 import MainNoteSelectedList from '../MainNoteSelectedList/MainNoteSelectedList';
+import FolderNoteContext from '../FolderNoteContext';
 import './MainContent.css';
 
 
 class MainContent extends Component {
     static defaultProps = {
-        notes: [],
-        folders: [],
+
     };
     
-
+    static contextType = FolderNoteContext;
     render(){
-        const {folders, notes, deleteNote} = this.props;
+        
+        const {folders, notes} = this.context;
         return (
             <div className='mainContent'>
-                
                 <Route
                     exact
                     path='/'
-                    render={() =>
-                        <SideBarList folders={folders} />
-                    }
+                    render={() => <SideBarList />}
                 />
                 <Route
                     path='/folder/:folderId'
                     render={(routerProps) =>
-                        <SideBarList folders={folders} folderId={routerProps.match.params.folderId}/>
+                        <SideBarList folderId={routerProps.match.params.folderId}/>
                     }
                 />
                 <Route
@@ -42,24 +40,24 @@ class MainContent extends Component {
                     }
                     }
                 />
-                
                 <Route
                     exact
                     path='/'
-                    render={() =>
-                        <MainNoteList notes={notes} deleteNote={deleteNote}/>
-                    }
+                    render={() => <MainNoteList />}
                 />
                 <Route
                     path='/folder/:folderId'
                     render={(routerProps) =>
-                        <MainNoteList notes={notes} folderId={routerProps.match.params.folderId} deleteNote={deleteNote}/>
+                        <MainNoteList folderId={routerProps.match.params.folderId}/>
                     }
                 />
                 <Route
                     path='/note/:noteId'
                     render={(routerProps) => 
-                        <MainNoteSelectedList note={notes.find(item => item.id === routerProps.match.params.noteId)} deleteNote={deleteNote} history={routerProps.history}/>
+                        <MainNoteSelectedList 
+                            note={notes.find(item => item.id === routerProps.match.params.noteId)} 
+                            history={routerProps.history}
+                        />
                     }
                 />
             </div>

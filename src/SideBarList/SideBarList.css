@@ -1,21 +1,18 @@
-.addNoteIcon{
+.addFolderIcon{
     color: black;
 }
-.addNote{
+
+
+.addFolder{
     border: none;
     margin-left: 50%;
     transform: translateX(-50%);
     height: 50px;
     width: 50px;
-    border-radius: 120px;
+    border-radius: 100px;
 }
-    .addNote:hover{
+
+    .addFolder:hover{
         background-color: rgb(163, 156, 159);
-
+ 
     }
-
-
-
-
-
-    

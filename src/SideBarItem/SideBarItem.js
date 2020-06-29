@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './sideBarItem.css'
 import {Link } from 'react-router-dom';
-class SideBarItem extends Component {
-    static defaultProps = {
-        folder: {},
-    };
 
-    render(){
-        const {folder} = this.props
-        return (
-            <li className="sideBarItem">
-                
-                <Link to={`/folder/${folder.id}`}>
-                    <p>{folder.name}</p>
-                </Link>
-                
-            </li>
-        );
-    }
+export default function SideBarItem(props){
+    const {folder} = props
+    return (
+        <li className="sideBarItem">
+            <p>
+            <Link to={`/folder/${folder.id}`}>
+                {folder.name}
+            </Link>
+            </p>
+            
+        </li>
+    );
+    
 }
 
-export default SideBarItem;
+SideBarItem.defaultProps={
+    folder: {},
+}
+

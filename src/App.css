@@ -6,62 +6,65 @@ html, body, #root, .App{
   height: 100%;
 }
 
+
 .white{
   background-color: white;
 }
 
 .Home{
-  background-color: rgb(235, 217, 233);
+  background-color: rgb(51, 63, 95);
   min-height: 10vh;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  .Home h1{
+    margin: 0;
+    
+    /* padding: 10px 0; */
+    text-align: center;
+  }
+a {
+  text-decoration: none;
+}
+a:link {
+  color: white;
 }
 
-.mainContent{
-  min-height: 90vh;
+/* visited link */
+a:visited {
+color: white;
 }
 
-.Home h1{
-  margin: 0;
-  /* padding: 10px 0; */
-  text-align: center;
+/* mouse over link */
+a:hover {
+color: rgba(143, 142, 120, 0.685);
+
 }
 
-ul{
+/* selected link */
+a:active {
+color: black;
+}
+
+ul {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
 
-p{
+p {
   margin: 0;
+  color: white;
 }
 
-button{
+button {
   cursor: pointer;
 }
 
-a{
-  text-decoration: none;
-}
 
-a:link {
-  color: black;
-}
 
-/* visited link */
-a:visited {
-  color: black;
-}
-
-/* mouse over link */
-a:hover {
-  color: rgba(51, 44, 44, 0.685);
-  
-}
-
-/* selected link */
-a:active {
-  color: black;
-}
 
 /* .App {
   text-align: center;

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import SideBarSelectedItem from '../SideBarSelectedItem/SideBarSelectedItem'
-import { withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
+import './SideBarSelectedList.css'
 class SideBarSelectedList extends Component {
     static defaultProps = {
+        folder: {}
     };
 
     render(){
@@ -10,9 +12,17 @@ class SideBarSelectedList extends Component {
         return (
             <nav className='sideBar'>
                 <ul className="sideBarList">
-                    <SideBarSelectedItem folder={folder}/>
+                    <li className="sideBarSelectedItem">
+                        <p>{folder.name}</p>
+                    </li>
                 </ul>
-                <button className="goBack" onClick={() => history.goBack()}>back</button>
+                <div className="goBack">
+                    
+                    <button className="goBackBtn" onClick={() => history.goBack()}>
+                        <FontAwesomeIcon icon={faChevronLeft} style={{ color: "black" }}/>
+                        <span> BACK</span>
+                    </button>
+                </div>
             </nav>
         );
     }

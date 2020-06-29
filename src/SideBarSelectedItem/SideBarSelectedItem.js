@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './SideBarSelectedItem.css'
-class SideBarSelectedItem extends Component {
-    static defaultProps = {
-        folder: {},
-    };
-
-    render(){
-        const {folder} = this.props
-        return (
-            <li className="sideBarSelectedItem">
-                <p>{folder.name}</p>
-            </li>
-        );
-    }
+function SideBarSelectedItem(props){    
+    const {folder} = props
+    return (
+        <li className="sideBarSelectedItem">
+            <p>{folder.name}</p>
+        </li>
+    );
 }
+
+SideBarSelectedItem.defaultProps = {
+    folder: {},
+};
 
 export default SideBarSelectedItem;
