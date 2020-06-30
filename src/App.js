@@ -3,6 +3,7 @@ import {Link } from 'react-router-dom';
 import './App.css';
 import MainContent from './MainContent/MainContent';
 import FolderNoteContext from './FolderNoteContext';
+import RatingError from './RatingError';
 // import STORY from './dummy-story';
 
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
     })
   }
   setNotes = notes => {
+    notes.forEach(note => note.modified = note.modified.slice(0,10));
     this.setState({
       notes,
       error: null,
@@ -81,9 +83,11 @@ class App extends Component {
             </h1>
         </div>
         <FolderNoteContext.Provider value={contextValue}>
+          <RatingError>
           <MainContent
               deleteNote={this.deleteNote}
           />
+          </RatingError>
         </FolderNoteContext.Provider>
         {/* <MainContent
               notes={notes} folders={folders} deleteNote={this.deleteNote}

@@ -2,10 +2,9 @@ import React from 'react';
 import FolderNoteContext from '../FolderNoteContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTrashAlt} from '@fortawesome/free-regular-svg-icons';
+import { format } from 'date-fns'
 function MainNoteSelectedItem(props){
-
-        const {note, goBack}=props;
-
+    const {note, goBack}=props;
         return(
             <FolderNoteContext.Consumer>
                 {(context) => {
@@ -17,7 +16,8 @@ function MainNoteSelectedItem(props){
                                     {note.name}
                                 </p>
                                 <br/>
-                                <p>{note.modified}</p>
+                                <p>Modified <span>&ensp;</span> <span>{note.modified}</span></p> 
+                                {/* <p>{format(note.modified, 'Do MMM YYYY')}</p> */}
                                 
                             </div>
                             <div className="Delete">

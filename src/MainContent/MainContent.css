@@ -58,26 +58,22 @@
     width: 32px;
 }
 
-.Delete button{
-    height: 30px;
-    margin-top: 32px;
-    width: 95px;
-    border: none;
-    background-color: rgb(174, 175, 182);
-    transform: rotate(-90deg);
-}
+    .Delete button{
+        height: 30px;
+        margin-top: 32px;
+        width: 95px;
+        border: none;
+        background-color: rgb(174, 175, 182);
+        transform: rotate(-90deg);
+    }
 
-.Delete button:hover{
-    background-color: rgb(167, 65, 65);
-    color: white;
-}
-
-
+    .Delete button:hover{
+        background-color: rgb(167, 65, 65);
+        color: white;
+    }
 
 .Note{
-    justify-content: space-between;
     padding:10px 0;
-    
 }
 .noteName{
     font-size: 24px;

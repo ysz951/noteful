@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import FolderNoteContext from '../FolderNoteContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTrashAlt} from '@fortawesome/free-regular-svg-icons';
+import { format } from 'date-fns';
 export default function MainNoteItem(props){
     
     return(
@@ -12,7 +13,8 @@ export default function MainNoteItem(props){
             {(context) => {
                 const {note}=props;
                 const {deleteNote} = context
-                // console.log(note.modified)
+                // console.log(note.modified.slice(0,10))
+
                 return (
                     <li className="mainNoteItem">
                         <div className="Note"> 
@@ -22,7 +24,8 @@ export default function MainNoteItem(props){
                             </Link>
                             </p>
                             <br/>
-                            <p>{note.modified}</p>
+                            <p>Modified <span>&ensp;</span> <span>{note.modified}</span></p> 
+                            {/* <p>{format(date, 'Do MMM YYYY')}</p> */}
                             
                         </div>
                         <div className="Delete">

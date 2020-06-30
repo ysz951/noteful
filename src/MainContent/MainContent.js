@@ -6,7 +6,8 @@ import MainNoteList from '../MainNoteList/MainNoteList';
 import MainNoteSelectedList from '../MainNoteSelectedList/MainNoteSelectedList';
 import FolderNoteContext from '../FolderNoteContext';
 import './MainContent.css';
-
+import Rating from '../Rating'
+import RatingError from '../RatingError';
 
 class MainContent extends Component {
     static defaultProps = {
@@ -17,8 +18,12 @@ class MainContent extends Component {
     render(){
         
         const {folders, notes} = this.context;
-        return (
+        return (  
+            
             <div className='mainContent'>
+                {/* <RatingError>
+                <Rating value={'a'}/>
+                </RatingError> */}
                 <Route
                     exact
                     path='/'
