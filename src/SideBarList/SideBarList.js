@@ -24,7 +24,7 @@ class SideBarList extends Component {
                     }
                 </ul>
                 {/* <FontAwesomeIcon className = "black" icon={faPlusSquare }/> */}
-                <button className="addFolder">
+                <button className="addFolder" type='button'>
                     <FontAwesomeIcon className="addFolderIcon"icon={faPlus }/>
                     <br/>
                     <span>Folder</span>

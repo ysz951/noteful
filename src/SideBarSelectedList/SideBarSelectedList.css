@@ -1,18 +1,27 @@
 .goBack{
     display: flex;
     justify-content: center;
+    margin-left: 10%
     /* margin-left: 50%;
     transform: translateX(-50%); */
 }
 
-    .goBack button{
-        border: none;
-        background-color: white;
-        padding:0 10px;
-        border-radius: 20px;
-        height: 35px;
-    }
+.goBackBtn{
+    border: none;
+    background-color: white;
+    padding:0 10px;
+    border-radius: 20px;
+    height: 35px;
+}
 
-    .goBack button:hover{
-        background-color: rgb(207, 196, 34);
-    }
+.goBackBtn:hover{
+    background-color: rgb(151, 124, 36);
+    color: white
+}
+
+/* .goBackIcon{
+    color: black;
+}
+    .goBackIcon:hover{
+        color: white;
+    } */

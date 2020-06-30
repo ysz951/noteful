@@ -1,6 +1,6 @@
-.addNoteIcon{
+/* .addNoteIcon{
     color: black;
-}
+} */
 .addNote{
     border: none;
     margin-left: 50%;
@@ -10,8 +10,9 @@
     border-radius: 120px;
 }
     .addNote:hover{
-        background-color: rgb(163, 156, 159);
-
+        /* background-color: rgb(100, 94, 97); */
+        background-color: rgb(71, 153, 153);
+        color: white;
     }
 
 

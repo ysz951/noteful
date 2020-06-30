@@ -1,9 +1,10 @@
 import React from 'react';
 import FolderNoteContext from '../FolderNoteContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTrashAlt} from '@fortawesome/free-regular-svg-icons';
 function MainNoteSelectedItem(props){
 
         const {note, goBack}=props;
-        // console.log(onClickCancel)
 
         return(
             <FolderNoteContext.Consumer>
@@ -29,7 +30,8 @@ function MainNoteSelectedItem(props){
                                     }}
                                     type='button'
                                 >
-                                    delete
+                                    <FontAwesomeIcon className="deleteIcon"icon={faTrashAlt}/>
+                                    <span> Delete</span>
                                 </button>
                             </div>
                         </li>

@@ -2,13 +2,17 @@ import React from 'react';
 import './MainNoteItem.css';
 import {Link} from 'react-router-dom';
 import FolderNoteContext from '../FolderNoteContext';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTrashAlt} from '@fortawesome/free-regular-svg-icons';
 export default function MainNoteItem(props){
+    
     return(
+        
         <FolderNoteContext.Consumer>
             {(context) => {
                 const {note}=props;
                 const {deleteNote} = context
+                // console.log(note.modified)
                 return (
                     <li className="mainNoteItem">
                         <div className="Note"> 
@@ -25,8 +29,9 @@ export default function MainNoteItem(props){
                             <button 
                                 onClick={() => deleteNote(note.id)}
                                 type='button'
-                            >
-                                delete
+                            >   
+                                <FontAwesomeIcon className="deleteIcon"icon={faTrashAlt}/>
+                                <span> Delete</span>
                             </button>
                         </div>
                     </li>

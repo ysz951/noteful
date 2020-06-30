@@ -18,8 +18,12 @@ class SideBarSelectedList extends Component {
                 </ul>
                 <div className="goBack">
                     
-                    <button className="goBackBtn" onClick={() => history.goBack()}>
-                        <FontAwesomeIcon icon={faChevronLeft} style={{ color: "black" }}/>
+                    <button 
+                        className="goBackBtn" 
+                        onClick={() => history.goBack()}
+                        type='button'
+                    >
+                        <FontAwesomeIcon icon={faChevronLeft}/>
                         <span> BACK</span>
                     </button>
                 </div>
