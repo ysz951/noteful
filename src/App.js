@@ -3,14 +3,12 @@ import {Link } from 'react-router-dom';
 import './App.css';
 import MainContent from './MainContent/MainContent';
 import FolderNoteContext from './FolderNoteContext';
-import ComponentError from './ComponentError';
-// import STORY from './dummy-story';
-import { format } from 'date-fns'
+import config from './config';
+
 class App extends Component {
   state = {
     folders: [],
     notes: [],
-    error: null,
   }
   handleAddFolder = folder => {
     this.setState({
@@ -25,7 +23,7 @@ class App extends Component {
   }
 
   deleteNote = noteId => {
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -37,8 +35,7 @@ class App extends Component {
         }
       })
       .catch(error => {
-        // console.error(error)
-        this.setState({ error })
+        alert("Something went wrong, please try again later.")
       })
     const newNotes = this.state.notes.filter(note => note.id !== noteId);
     this.setState({
@@ -46,27 +43,11 @@ class App extends Component {
     })
 
   }
-  // setFolders = folders => {
-  //   this.setState({
-  //     folders,
-  //     error: null,
-  //   })
-  // }
-  // setNotes = notes => {
-  //   // notes.forEach(note => {
-  //   //   // console.log(typeof new Date(note.modified.slice(0,10)))
-  //   //   // if (note.modified[0] === '2') note.modified = new Date(note.modified.slice(0,10))
-  //   //   note.modified = note.modified.slice(0,10)
-  //   // });
-  //   this.setState({
-  //     notes,
-  //     error: null,
-  //   })
-  // }
+
   componentDidMount() {
     Promise.all([
-      fetch('http://localhost:9090/notes'),
-      fetch('http://localhost:9090/folders'),
+      fetch(`${config.API_ENDPOINT}/notes`),
+      fetch(`${config.API_ENDPOINT}/folders`),
     ])
     .then(([notesRes, foldersRes]) => {
       if (!notesRes.ok)
@@ -80,44 +61,20 @@ class App extends Component {
       ])
     })
     .then(([notes, folders]) => {
+      notes.forEach(note => note.modified = note.modified.slice(0,10));
       this.setState({ 
         notes, 
         folders,
-        error: null, 
       })
     })
     .catch(error => {
       alert("Something went wrong, please try again later.")
-      this.setState({ error })
     })
-    // fetch('http://localhost:9090/folders')
-    //   .then(res => {
-    //     if (!res.ok) {
-    //       throw new Error('Something went wrong, please try again later.')
-    //     }
-    //     return res.json()
-    //   })
-    //   .then(this.setFolders)
-    //   .catch(error => {
-    //     this.setState({error: error.message});
-    //   })
-    // fetch('http://localhost:9090/notes')
-    //   .then(res => {
-    //     if (!res.ok) {
-    //       throw new Error('Something went wrong, please try again later.')
-    //     }
-    //     return res.json()
-    //   })
-    //   .then(this.setNotes)
-    //   .catch(error => this.setState({error: error.message}))
   }
 
 
   render(){
-    
-    // const {folders,notes} = this.state;
-    // console.log(STORY);
-    // console.log(this.state.error)
+
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
@@ -138,9 +95,7 @@ class App extends Component {
         </div>
         <FolderNoteContext.Provider value={contextValue}>
           
-          <MainContent
-              deleteNote={this.deleteNote}
-          />
+          <MainContent />
           
         </FolderNoteContext.Provider>
         {/* <MainContent

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MainNoteItem from '../MainNoteItem/MainNoteItem'
 import './AddNote.css'
 import FolderNoteContext from '../FolderNoteContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +6,7 @@ import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 import ValidationError from '../ValidationError/ValidationError';
 import PropTypes from 'prop-types';
 import {validateName, validateContent, formatName} from '../ValidationHelper';
+import config from '../config';
 
 class AddNote extends Component {
     state = {
@@ -23,7 +23,7 @@ class AddNote extends Component {
         history: PropTypes.shape({
           push: PropTypes.func,
         }).isRequired,
-      };
+    };
     static defaultProps = {
         history: {}
     };
@@ -42,49 +42,49 @@ class AddNote extends Component {
     handleSubmit = e =>{
         e.preventDefault();
         const {name} = this.state;
+        const folderId = e.target['note-folder-id'].value;
         // console.log(name.value.split(' '))
         const noteName = formatName(name.value);
 
         for (let note of this.context.notes){
-            if (note.name === noteName && note.folderId === e.target['note-folder-id'].value){
-                alert('warning');
+            if (note.name === noteName && note.folderId === folderId ){
+                alert('This note name has already been used in this folder.\nTry another name or folder.');
                 return
             }
         }
         const newNote = {
             name: noteName,
             content: this.state.content.value,
-            folderId: e.target['note-folder-id'].value,
+            folderId: folderId ,
             modified: new Date(),
         }
         // return
         // console.log(JSON.stringify(newNote ))
-        fetch(`http://localhost:9090/notes`, {
+        fetch(`${config.API_ENDPOINT}/note`, {
             method: 'POST',
             headers: {
               'content-type': 'application/json'
             },
             body: JSON.stringify(newNote),
-          })
+            })
             .then(res => {
               if (!res.ok)
                 return res.json().then(e => Promise.reject(e))
               return res.json()
             })
             .then(note => {
+              note.modified = note.modified.slice(0,10)
               this.context.addNote(note)
               this.props.history.push(`/folder/${note.folderId}`)
             })
             .catch(error => {
-              console.error({ error })
+              alert("Something went wrong, please try again later.")
             })
         
     }
     render(){
         const {history} = this.props;
         const {folders} = this.context;
-        // if (notes.length) console.log(notes[0].modified)
-        // console.log(typeof history)
         const nameError = validateName;
         const contentError = validateContent;
         return (
@@ -114,7 +114,7 @@ class AddNote extends Component {
                     {this.state.name.touched && (
                         <ValidationError message={nameError(this.state.name)} />
                     )}
-                    <div className="formss">
+                    <div className="contentGroup">
                         <label htmlFor="content">Content</label>
                         <input type="text" className="folderNameInput"
                         name="content" id="content" required

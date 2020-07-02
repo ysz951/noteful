@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './MainNoteItem.css';
 import {Link} from 'react-router-dom';
 import FolderNoteContext from '../FolderNoteContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTrashAlt} from '@fortawesome/free-regular-svg-icons';
-import { format } from 'date-fns';
+
 export default function MainNoteItem(props){
     
     return(
@@ -13,7 +14,6 @@ export default function MainNoteItem(props){
             {(context) => {
                 const {note}=props;
                 const {deleteNote} = context
-                // console.log(note.modified.slice(0,10))
 
                 return (
                     <li className="mainNoteItem">
@@ -46,6 +46,18 @@ export default function MainNoteItem(props){
 }
 MainNoteItem.defaultProps = {
     note: {},
-    // deleteNote: () => {},
+};
+MainNoteItem.propTypes ={
+    note: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        id: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string,
+        ]).isRequired,
+        modified: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string,
+        ]).isRequired,
+    }).isRequired,
 };
 // export default MainNoteItem;

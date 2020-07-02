@@ -14,3 +14,7 @@ input{
     height: 25px;
     margin: 20px;
 }
+
+.contentGroup input{
+    height: 60px;
+}

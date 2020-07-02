@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FolderNoteContext from '../FolderNoteContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTrashAlt} from '@fortawesome/free-regular-svg-icons';
-import { format } from 'date-fns'
+
 function MainNoteSelectedItem(props){
     const {note, goBack}=props;
         return(
@@ -22,8 +23,6 @@ function MainNoteSelectedItem(props){
                             </div>
                             <div className="Delete">
                                 <button 
-                                    // onClick = {goBack}
-                                    // onClick = {() => goBack(item)}
                                     onClick={() => {
                                         goBack();
                                         deleteNote(note.id);
@@ -45,4 +44,18 @@ MainNoteSelectedItem.defaultProps = {
     goBack: () => {},
 };
 
+MainNoteSelectedItem.propTypes ={
+    goBack: PropTypes.func.isRequired,
+    note: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        id: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string,
+        ]).isRequired,
+        modified: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string,
+        ]).isRequired,
+    }).isRequired,
+};
 export default MainNoteSelectedItem;

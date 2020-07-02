@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import MainNoteItem from '../MainNoteItem/MainNoteItem'
 import './MainNoteList.css'
 import FolderNoteContext from '../FolderNoteContext';
@@ -6,8 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 class MainNoteList extends Component {
     static defaultProps = {
-        
+        history: {},
     };
+    static propTypes ={
+        folderId: PropTypes.string.isRequired,
+        history: PropTypes.shape({
+            push: PropTypes.func,
+          }).isRequired,
+    }
     static contextType = FolderNoteContext;
     render(){
         const {folderId, history} = this.props;

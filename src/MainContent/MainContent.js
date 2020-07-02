@@ -10,20 +10,11 @@ import ComponentError from '../ComponentError';
 import AddFolder from '../AddFolder/AddFolder'
 import AddNote from '../AddNote/AddNote'
 class MainContent extends Component {
-    static defaultProps = {
-
-    };
-    
     static contextType = FolderNoteContext;
     render(){
-        
         const {folders, notes} = this.context;
         return (  
-            
             <div className='mainContent'>
-                {/* <RatingError>
-                <Rating value={'a'}/>
-                </RatingError> */}
                 <Route
                     exact
                     path='/'
@@ -31,10 +22,10 @@ class MainContent extends Component {
                         return (
                             <>
                             <ComponentError sec="Folder List">
-                                <SideBarList history={routerProps.history}/>
+                                <SideBarList folderId="" history={routerProps.history}/>
                             </ComponentError>
                             <ComponentError sec="Note List">
-                                <MainNoteList history={routerProps.history}/>
+                                <MainNoteList folderId="" history={routerProps.history}/>
                             </ComponentError>
                             </>
                         )

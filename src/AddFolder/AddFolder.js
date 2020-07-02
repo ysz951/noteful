@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MainNoteItem from '../MainNoteItem/MainNoteItem'
 import './AddFolder.css'
 import FolderNoteContext from '../FolderNoteContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +6,7 @@ import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 import ValidationError from '../ValidationError/ValidationError';
 import PropTypes from 'prop-types';
 import {validateName, formatName} from '../ValidationHelper';
+import config from '../config';
 
 class AddFolder extends Component {
     state = {
@@ -38,8 +38,8 @@ class AddFolder extends Component {
         // console.log(name.value, formatName)
         for (let folder of this.context.folders){
             if (folder.name === folderName ){
-                alert('warning');
-                return
+              alert('This folder name has already been used');
+              return
             }
         }
         const folder = {
@@ -47,7 +47,7 @@ class AddFolder extends Component {
         };
         
 
-        fetch(`http://localhost:9090/folders`, {
+        fetch(`${config.API_ENDPOINT}/folders`, {
             method: 'POST',
             body: JSON.stringify(folder),
             headers: {
@@ -65,7 +65,7 @@ class AddFolder extends Component {
               this.props.history.goBack();
             })
             .catch(error => {
-              console.error(error)
+              alert("Something went wrong, please try again later.")
             })
     }
     render(){

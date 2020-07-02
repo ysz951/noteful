@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './SideBarList.css'
 import {Link } from 'react-router-dom';
 import FolderNoteContext from '../FolderNoteContext';
@@ -7,15 +8,19 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 class SideBarList extends Component {
     static defaultProps = {
-
+        history: {},
+        folderId: "",
     };
-    
+    static propTypes ={
+        folderId: PropTypes.string.isRequired,
+        history: PropTypes.shape({
+            push: PropTypes.func,
+          }).isRequired,
+    }
     static contextType = FolderNoteContext;
     render(){
         const {folderId, history} = this.props;
         const {folders} = this.context;
-        // folders.toUpperCase()
-        // const folders = 1;
         return (
             <nav className="sideBar mainContentLeft">
                 <ul className="sideBarList">
@@ -35,7 +40,7 @@ class SideBarList extends Component {
                 </ul>
                 {/* <FontAwesomeIcon className = "black" icon={faPlusSquare }/> */}
                 <button className="addFolder" type="button" onClick={() => history.push("/add-folder")}>
-                    <FontAwesomeIcon className="addFolderIcon"icon={faPlus }/>
+                    <FontAwesomeIcon className="addFolderIcon"icon={faPlus}/>
                     <br/>
                     <span>Folder</span>
                 </button>
