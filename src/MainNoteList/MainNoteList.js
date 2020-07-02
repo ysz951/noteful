@@ -10,18 +10,18 @@ class MainNoteList extends Component {
     };
     static contextType = FolderNoteContext;
     render(){
-        const {folderId} = this.props;
+        const {folderId, history} = this.props;
         const {notes} = this.context;
         return (
-            <main className='mainNote'>
-                <ul className='mainNoteList'>
+            <main className="mainNote mainContentRight">
+                <ul className="mainNoteList">
                     {notes.map((note,i) => folderId ? 
                         note.folderId === folderId ? 
                         <MainNoteItem key={i} note={note}/> : 
                         "" : 
                         <MainNoteItem key={i} note={note}/>)}
                 </ul>
-                <button className="addNote">
+                <button className="addNote" type="button" onClick={() => history.push("/add-note")}>
                     <FontAwesomeIcon className="addNoteIcon"icon={faPlus }/>
                     <br/>
                     <span>Note</span>

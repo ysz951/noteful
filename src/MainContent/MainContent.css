@@ -5,7 +5,7 @@
     margin-top: 0;
 }
 
-.sideBar {
+.mainContentLeft {
     width: 30%;
     background-color: rgb(41, 41, 68);
     /* background-color: rgb(54, 53, 80); */
@@ -39,7 +39,7 @@
 }
 
 
-.mainNote{
+.mainContentRight{
     width: 50%;
     padding-top: 10px;
     padding-left:10px;
@@ -76,6 +76,7 @@
     padding:10px 0;
 }
 .noteName{
-    font-size: 24px;
+    margin: 0;
+    /* font-size: 24px; */
 }
 

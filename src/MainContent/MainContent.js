@@ -6,9 +6,9 @@ import MainNoteList from '../MainNoteList/MainNoteList';
 import MainNoteSelectedList from '../MainNoteSelectedList/MainNoteSelectedList';
 import FolderNoteContext from '../FolderNoteContext';
 import './MainContent.css';
-import Rating from '../Rating'
-import RatingError from '../RatingError';
-
+import ComponentError from '../ComponentError';
+import AddFolder from '../AddFolder/AddFolder'
+import AddNote from '../AddNote/AddNote'
 class MainContent extends Component {
     static defaultProps = {
 
@@ -27,11 +27,15 @@ class MainContent extends Component {
                 <Route
                     exact
                     path='/'
-                    render={() => {
+                    render={(routerProps) => {
                         return (
                             <>
-                                <SideBarList />
-                                <MainNoteList />
+                            <ComponentError sec="Folder List">
+                                <SideBarList history={routerProps.history}/>
+                            </ComponentError>
+                            <ComponentError sec="Note List">
+                                <MainNoteList history={routerProps.history}/>
+                            </ComponentError>
                             </>
                         )
                     }}
@@ -40,9 +44,13 @@ class MainContent extends Component {
                     path='/folder/:folderId'
                     render={(routerProps) => {
                         return (
-                            <>
-                                <SideBarList folderId={routerProps.match.params.folderId}/>
-                                <MainNoteList folderId={routerProps.match.params.folderId}/>
+                            <>  
+                                <ComponentError sec="Selected Folder List">
+                                    <SideBarList folderId={routerProps.match.params.folderId} history={routerProps.history}/>
+                                </ComponentError>
+                                <ComponentError sec="Selected Folder-Note List">
+                                    <MainNoteList folderId={routerProps.match.params.folderId} history={routerProps.history}/>
+                                </ComponentError>
                             </>
                         )
                     }}
@@ -54,14 +62,34 @@ class MainContent extends Component {
                         const folder = folders.find(item => item.id === note.folderId) || {};
                         return (
                             <>
-                                <SideBarSelectedList folder={folder}  history={routerProps.history}/>
-                                <MainNoteSelectedList 
-                                    note={notes.find(item => item.id === routerProps.match.params.noteId)} 
-                                    history={routerProps.history}
-                                />
+                                <ComponentError sec="Selected Note-Folder">
+                                    <SideBarSelectedList folder={folder}  history={routerProps.history}/>
+                                </ComponentError>
+                                <ComponentError sec="Selected Note">
+                                    <MainNoteSelectedList 
+                                        note={notes.find(item => item.id === routerProps.match.params.noteId)} 
+                                        history={routerProps.history}
+                                    />
+                                </ComponentError>
                             </>
                         )
                     }}
+                />
+                <Route
+                    path='/add-folder'
+                    render={(routerProps) => 
+                        <ComponentError sec="Add Folder">
+                            <AddFolder history={routerProps.history}/>
+                        </ComponentError>
+                    }
+                />
+                <Route
+                    path='/add-note'
+                    render={(routerProps) => 
+                        <ComponentError sec="Add Note">
+                            <AddNote history={routerProps.history}/>
+                        </ComponentError>
+                    }
                 />
             </div>
         );

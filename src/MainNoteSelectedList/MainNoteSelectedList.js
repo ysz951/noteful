@@ -20,7 +20,7 @@ class MainNoteSelectedList extends Component {
         const {note} = this.props;
        
         return (
-            <main className="mainNote">
+            <main className="mainNote mainContentRight">
                 <ul className='mainNoteList'>
                     <MainNoteSelectedItem note={note} goBack={this.goBack}/>
                     <li className="NoteContent">{note.content}</li>

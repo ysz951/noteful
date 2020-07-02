@@ -18,11 +18,11 @@ export default function MainNoteItem(props){
                 return (
                     <li className="mainNoteItem">
                         <div className="Note"> 
-                            <p className="noteName">
+                            <h2 className="noteName">
                             <Link to={`/note/${note.id}`}>
                                 {note.name}
                             </Link>
-                            </p>
+                            </h2>
                             <br/>
                             <p>Modified <span>&ensp;</span> <span>{note.modified}</span></p> 
                             {/* <p>{format(date, 'Do MMM YYYY')}</p> */}

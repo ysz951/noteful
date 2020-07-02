@@ -12,9 +12,9 @@ function MainNoteSelectedItem(props){
                     return (
                         <li className="mainNoteItem">
                             <div className="Note"> 
-                                <p className="noteName">
+                                <h2 className="noteName">
                                     {note.name}
-                                </p>
+                                </h2>
                                 <br/>
                                 <p>Modified <span>&ensp;</span> <span>{note.modified}</span></p> 
                                 {/* <p>{format(note.modified, 'Do MMM YYYY')}</p> */}

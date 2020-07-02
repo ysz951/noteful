@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class RatingError extends Component {
+class ComponentError extends Component {
     static getDerivedStateFromError(error) {
         return { hasError: true };
     }
@@ -11,13 +11,15 @@ class RatingError extends Component {
         };
     }
     render() {
+        const {sec} = this.props;
+        // console.log(sec)
         if (this.state.hasError) {      
           return (
-            <h2>Could not display this currency.</h2>
+            <h2>Could not display {sec} part.</h2>
           );
         }
         return this.props.children;
     }
 }
 
-export default RatingError;
+export default ComponentError;

@@ -1,0 +1,16 @@
+label{
+    display: block;
+}
+
+#note-folder-select{
+    margin:20px;
+    width: 259px;
+    height: 25px;
+}
+
+input{
+    display: block;
+    width: 255px;
+    height: 25px;
+    margin: 20px;
+}

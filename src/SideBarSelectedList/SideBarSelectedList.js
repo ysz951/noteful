@@ -10,7 +10,7 @@ class SideBarSelectedList extends Component {
     render(){
         const {folder, history} = this.props;
         return (
-            <nav className='sideBar'>
+            <nav className="sideBar mainContentLeft">
                 <ul className="sideBarList">
                     <li className="sideBarSelectedItem">
                         <p>{folder.name}</p>
