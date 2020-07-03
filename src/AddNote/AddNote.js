@@ -57,7 +57,7 @@ class AddNote extends Component {
             folderId: folderId ,
             modified: new Date(),
         }
-        fetch(`${config.API_ENDPOINT}/note`, {
+        fetch(`${config.API_ENDPOINT}/notes`, {
             method: 'POST',
             headers: {
               'content-type': 'application/json'
