@@ -7,6 +7,5 @@ export default function ValidationError(props) {
       <div className="error">{props.message}</div>
     );
   }
-
   return <></>
 }

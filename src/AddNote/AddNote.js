@@ -43,7 +43,6 @@ class AddNote extends Component {
         e.preventDefault();
         const {name} = this.state;
         const folderId = e.target['note-folder-id'].value;
-        // console.log(name.value.split(' '))
         const noteName = formatName(name.value);
 
         for (let note of this.context.notes){
@@ -58,8 +57,6 @@ class AddNote extends Component {
             folderId: folderId ,
             modified: new Date(),
         }
-        // return
-        // console.log(JSON.stringify(newNote ))
         fetch(`${config.API_ENDPOINT}/note`, {
             method: 'POST',
             headers: {

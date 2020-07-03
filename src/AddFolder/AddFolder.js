@@ -35,7 +35,6 @@ class AddFolder extends Component {
         e.preventDefault();
         const {name} = this.state;
         const folderName = formatName(name.value)
-        // console.log(name.value, formatName)
         for (let folder of this.context.folders){
             if (folder.name === folderName ){
               alert('This folder name has already been used');
@@ -70,7 +69,6 @@ class AddFolder extends Component {
     }
     render(){
         const {history} = this.props;
-        // console.log(typeof history)
         const nameError = validateName;
         return (
             <>

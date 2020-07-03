@@ -18,8 +18,6 @@ function MainNoteSelectedItem(props){
                                 </h2>
                                 <br/>
                                 <p>Modified <span>&ensp;</span> <span>{note.modified}</span></p> 
-                                {/* <p>{format(note.modified, 'Do MMM YYYY')}</p> */}
-                                
                             </div>
                             <div className="Delete">
                                 <button 

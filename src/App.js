@@ -85,7 +85,6 @@ class App extends Component {
     return (
       
       <div className='App'>
-        {/* {this.state.error ? <h2 className="errorMessage" role="alert">Your form could not be submitted because of 3 validation errors.</h2> : ""} */}
         <div className='Home'>
         <h1>
             <Link to={`/`}>
@@ -94,13 +93,8 @@ class App extends Component {
             </h1>
         </div>
         <FolderNoteContext.Provider value={contextValue}>
-          
           <MainContent />
-          
         </FolderNoteContext.Provider>
-        {/* <MainContent
-              notes={notes} folders={folders} deleteNote={this.deleteNote}
-        /> */}
       </div>
     );
   }

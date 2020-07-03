@@ -1,7 +1,5 @@
 
 export const validateName = Name => {
-    // const name = this.state.name.value.trim();
-    // const name = Name.value.trim();
     const name = Name.value.trim().split(/[ ]+/).filter(Boolean).join(' ');
     const isAlpha = function(ch){
         return /^[A-Za-z]{1,1}$/.test(ch);
