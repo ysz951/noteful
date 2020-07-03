@@ -1,7 +1,29 @@
 /* .addFolderIcon{
     color: black;
 } */
+.sideBarList {
+    margin-left:10%;
+    width: 90%;
+}
 
+.sideBarList li {
+    padding:10px 0;
+    margin-bottom:15px;
+    font-size: 20px;
+    /* padding-left: 30%; */
+    text-align: center;
+}
+
+.sideBarItem {
+    /* background-color: rgb(76, 82, 107); */
+    background-color: rgb(83, 90, 117);
+    
+}
+
+
+.sideBarSelectedItem {
+    background-color: rgb(63, 71, 100);
+}
 
 .addFolder{
     border: none;

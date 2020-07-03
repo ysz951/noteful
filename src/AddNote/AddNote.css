@@ -1,20 +1,22 @@
-label{
-    display: block;
+
+.addNoteForm{
+    background-color: rgb(36, 57, 77);
+    max-width: 300px;
+    margin-left: 50px;
 }
 
 #note-folder-select{
     margin:20px;
+    margin-top: 10px;
     width: 259px;
     height: 25px;
 }
 
-input{
-    display: block;
-    width: 255px;
-    height: 25px;
-    margin: 20px;
-}
 
-.contentGroup input{
-    height: 60px;
+textarea{
+    display:block;
+    width: 255px;
+    border:none;
+    margin: 20px;
+    margin-top:10px;
 }

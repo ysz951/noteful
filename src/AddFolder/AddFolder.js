@@ -86,10 +86,8 @@ class AddFolder extends Component {
             </nav>
             <main className="mainContentRight">
                 <h2>Add a folder</h2>
-                <form className="registration" onSubmit={this.handleSubmit}>
-                    
-                    {/* <div className="registration__hint">* required field</div>   */}
-                    <div className="form-group">
+                <form className="addFolderForm" onSubmit={this.handleSubmit}>
+                    <div className="nameGroup">
                         <label htmlFor="name">Name</label>
                         <input type="text" className="folderNameInput"
                         name="name" id="name" required
@@ -99,11 +97,8 @@ class AddFolder extends Component {
                     {this.state.name.touched && (
                         <ValidationError message={nameError(this.state.name)} />
                     )}
-                    <div className="registration__button__group">
- 
-                        <button type="submit" className="registration__button"
-                            disabled={nameError(this.state.name)}
-                        >
+                    <div className="submitGroup">
+                        <button type="submit" disabled={nameError(this.state.name)}>
                             OK
                         </button>
                     </div>

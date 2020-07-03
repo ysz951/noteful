@@ -30,7 +30,7 @@ export const validateContent = Content =>{
         return "Content is required";
     }
     else if (content.length < 5){
-        return "Name must be at least 5 characters long";
+        return "Content must be at least 5 characters long";
     }
 
 }

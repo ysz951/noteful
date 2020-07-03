@@ -1,5 +1,9 @@
+
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@500&display=swap');
+
 body{
   overflow-y: scroll;
+  /* font-family: 'Open Sans'; */
 }
 
 html, body, #root, .App{
@@ -20,11 +24,10 @@ html, body, #root, .App{
   justify-content: center;
 }
   .Home h1{
-    /* margin: 0; */
-    
-    /* padding: 10px 0; */
     text-align: center;
+    font-family: 'MuseoModerno', cursive;
   }
+
 a {
   text-decoration: none;
 }
