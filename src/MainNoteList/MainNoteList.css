@@ -7,12 +7,12 @@
 }
 
 .Delete{
-    width: 32px;
+    width: 45px;
 }
     .Delete button{
-        height: 30px;
-        margin-top: 32px;
-        width: 95px;
+        height: 25px;
+        margin-top: 46px;
+        width: 116px;
         border: none;
         background-color: rgb(174, 175, 182);
         transform: rotate(-90deg);
@@ -47,5 +47,17 @@
 
 
 
+@media only screen and (min-width: 420px) {
+    /* category list two column */
+    .Delete{
+        width: 32px;
+    }
+        .Delete button{
+            height: 30px;
+            margin-top: 32px;
+            width: 95px;
+        }
+    
+}
 
     

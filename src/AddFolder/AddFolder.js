@@ -87,13 +87,19 @@ class AddFolder extends Component {
                 <form className="addFolderForm" onSubmit={this.handleSubmit}>
                     <div className="nameGroup">
                         <label htmlFor="name">Name</label>
-                        <input type="text" className="folderNameInput"
-                        name="name" id="name" required
-                        onChange={e => this.updateName(e.target.value)}
+                        <input  type="text" 
+                                className="folderNameInput"
+                                name="name" 
+                                id="name" 
+                                aria-label="Name"
+                                aria-required="true"
+                                aria-describedby="folderNameError"
+                                required
+                                onChange={e => this.updateName(e.target.value)}
                         />
                     </div>
                     {this.state.name.touched && (
-                        <ValidationError message={nameError(this.state.name)} />
+                        <ValidationError id="folderNameError" message={nameError(this.state.name)} />
                     )}
                     <div className="submitGroup">
                         <button type="submit" disabled={nameError(this.state.name)}>

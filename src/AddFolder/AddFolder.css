@@ -32,15 +32,21 @@ h2{
 }
 input {
     display: block;
-    width: 255px;
+    border: none;
+    padding: 0;
+    width: 80%;
+    /* width: 255px; */
     height: 25px;
-    margin: 20px;
+    /* margin:auto; */
     margin-top:10px;
+    margin-bottom:20px;
+    margin-left:10%;
+    /* margin-top:10px; */
 }
 
 label{
     color: white;
-    margin-left:20px;
+    margin-left:10%;
     font-size: 18px;
 }
 
@@ -53,7 +59,7 @@ label{
 }
 
 .submitGroup button{
-    margin-left:20px;
+    margin-left:10%;
     border: none;
     color: white;
     padding:10px 25px;

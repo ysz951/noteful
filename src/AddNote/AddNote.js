@@ -9,16 +9,22 @@ import {validateName, validateContent, formatName} from '../ValidationHelper';
 import config from '../config';
 
 class AddNote extends Component {
-    state = {
-        name: {
-            value: "",
-            touched: false
-        },
-        content: {
-            value: "",
-            touched: false
-        },
-    };
+    constructor(){
+        super();
+        this.state = {
+            name: {
+                value: "",
+                touched: false
+            },
+            content: {
+                value: "",
+                touched: false
+            },
+            dupli: false
+        };
+        this.name = React.createRef();
+    }
+    
     static propTypes = {
         history: PropTypes.shape({
           push: PropTypes.func,
@@ -32,7 +38,10 @@ class AddNote extends Component {
     
 
     updateName(name){
-        this.setState({name: {value: name, touched: true}});
+        this.setState({
+            name: {value: name, touched: true},
+            dupli:false,
+        });
     }
 
     updateContent(content){
@@ -47,7 +56,13 @@ class AddNote extends Component {
 
         for (let note of this.context.notes){
             if (note.name === noteName && note.folderId === folderId ){
-                alert('This note name has already been used in this folder.\nTry another name or folder.');
+                this.setState(
+                    this.name.current.focus(),
+                );
+                this.setState({
+                    dupli: true
+                })
+                // alert('This note name has already been used in this folder.\nTry another name or folder.');
                 return
             }
         }
@@ -84,7 +99,8 @@ class AddNote extends Component {
         const {folders} = this.context;
         const nameError = validateName;
         const contentError = validateContent;
-        return (
+        const dupli = this.state.dupli ? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
+         return (
             <>
             <nav className="mainContentLeft addFolderNav">
             <button 
@@ -100,8 +116,9 @@ class AddNote extends Component {
                 <h2>Add a note</h2>
                 <form className="addNoteForm" onSubmit={this.handleSubmit}>
                     <div className="nameGroup">
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="name" ref={this.name}>Name</label>
                         <input type="text" className="folderNameInput"
+                        
                         name="name" id="name" required
                         onChange={e => this.updateName(e.target.value)}
                         />
@@ -109,6 +126,7 @@ class AddNote extends Component {
                     {this.state.name.touched && (
                         <ValidationError message={nameError(this.state.name)} />
                     )}
+                    {dupli}
                     <div className="contentGroup">
                         <label htmlFor="content">Content</label>
                         <textarea type="text" className="folderNameInput" rows="4"
@@ -119,6 +137,7 @@ class AddNote extends Component {
                     {this.state.content.touched && (
                         <ValidationError message={contentError(this.state.content)} />
                     )}
+                    
                     <div className='field'>
                         <label htmlFor='note-folder-select'>
                         Folder
