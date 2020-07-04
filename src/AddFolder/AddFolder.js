@@ -9,12 +9,18 @@ import {validateName, formatName} from '../ValidationHelper';
 import config from '../config';
 
 class AddFolder extends Component {
-    state = {
-        name: {
-          value: "",
-          touched: false
-        },
+  constructor(){
+    super();
+    this.state = {
+      name: {
+        value: "",
+        touched: false
+      },
+      nameRep: false
     };
+    this.name = React.createRef();
+  }
+    
     static propTypes = {
         history: PropTypes.shape({
           goBack: PropTypes.func,
@@ -28,7 +34,10 @@ class AddFolder extends Component {
     
 
     updateName(name){
-        this.setState({name: {value: name, touched: true}});
+        this.setState({
+          name: {value: name, touched: true},
+          nameRep: false,
+        });
     }
 
     handleSubmit = e =>{
@@ -37,7 +46,9 @@ class AddFolder extends Component {
         const folderName = formatName(name.value)
         for (let folder of this.context.folders){
             if (folder.name === folderName ){
-              alert('This folder name has already been used');
+              this.setState(this.name.current.focus());
+              this.setState({nameRep: true})
+              // alert('This note name has already been used in this folder.\nTry another name or folder.');
               return
             }
         }
@@ -70,6 +81,7 @@ class AddFolder extends Component {
     render(){
         const {history} = this.props;
         const nameError = validateName;
+        const nameRep = this.state.nameRep ? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
         return (
             <>
             <nav className="mainContentLeft addFolderNav">
@@ -91,9 +103,11 @@ class AddFolder extends Component {
                                 className="folderNameInput"
                                 name="name" 
                                 id="name" 
+                                ref={this.name}
                                 aria-label="Name"
                                 aria-required="true"
                                 aria-describedby="folderNameError"
+                                aria-invalid={this.state.nameRep}
                                 required
                                 onChange={e => this.updateName(e.target.value)}
                         />
@@ -101,6 +115,7 @@ class AddFolder extends Component {
                     {this.state.name.touched && (
                         <ValidationError id="folderNameError" message={nameError(this.state.name)} />
                     )}
+                    {nameRep}
                     <div className="submitGroup">
                         <button type="submit" disabled={nameError(this.state.name)}>
                             OK

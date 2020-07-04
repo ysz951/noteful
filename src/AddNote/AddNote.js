@@ -20,7 +20,7 @@ class AddNote extends Component {
                 value: "",
                 touched: false
             },
-            dupli: false
+            nameRep: false
         };
         this.name = React.createRef();
     }
@@ -40,7 +40,7 @@ class AddNote extends Component {
     updateName(name){
         this.setState({
             name: {value: name, touched: true},
-            dupli:false,
+            nameRep: false,
         });
     }
 
@@ -60,7 +60,7 @@ class AddNote extends Component {
                     this.name.current.focus(),
                 );
                 this.setState({
-                    dupli: true
+                    nameRep: true
                 })
                 // alert('This note name has already been used in this folder.\nTry another name or folder.');
                 return
@@ -99,7 +99,7 @@ class AddNote extends Component {
         const {folders} = this.context;
         const nameError = validateName;
         const contentError = validateContent;
-        const dupli = this.state.dupli ? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
+        const nameRep = this.state.nameRep? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
          return (
             <>
             <nav className="mainContentLeft addFolderNav">
@@ -116,31 +116,48 @@ class AddNote extends Component {
                 <h2>Add a note</h2>
                 <form className="addNoteForm" onSubmit={this.handleSubmit}>
                     <div className="nameGroup">
-                        <label htmlFor="name" ref={this.name}>Name</label>
-                        <input type="text" className="folderNameInput"
-                        
-                        name="name" id="name" required
-                        onChange={e => this.updateName(e.target.value)}
+                        <label htmlFor="name">Name</label>
+                        <input 
+                            type="text"
+                            className="folderNameInput"
+                            ref={this.name}
+                            name="name" 
+                            id="name"
+                            aria-label="Name"
+                            aria-required="true"
+                            aria-describedby="noteNameError"
+                            aria-invalid={this.state.nameRep} 
+                            required
+                            onChange={e => this.updateName(e.target.value)}
                         />
                     </div>
                     {this.state.name.touched && (
-                        <ValidationError message={nameError(this.state.name)} />
+                        <ValidationError id="noteNameError" message={nameError(this.state.name)} />
                     )}
-                    {dupli}
+                    {nameRep}
                     <div className="contentGroup">
                         <label htmlFor="content">Content</label>
-                        <textarea type="text" className="folderNameInput" rows="4"
-                        name="content" id="content" required
-                        onChange={e => this.updateContent(e.target.value)}
+                        <textarea 
+                            type="text" 
+                            className="folderNameInput" 
+                            rows="4"
+                            name="content" 
+                            id="content" 
+                            aria-label="Content"
+                            aria-required="true"
+                            aria-describedby="folderContentError"
+                            aria-invalid="false"
+                            required
+                            onChange={e => this.updateContent(e.target.value)}
                         />
                     </div>
                     {this.state.content.touched && (
-                        <ValidationError message={contentError(this.state.content)} />
+                        <ValidationError id ="folderContentError" message={contentError(this.state.content)} />
                     )}
                     
                     <div className='field'>
                         <label htmlFor='note-folder-select'>
-                        Folder
+                            Folder
                         </label>
                         <select id='note-folder-select' name='note-folder-id' required>
                         <option value="">...</option>
