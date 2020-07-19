@@ -62,6 +62,7 @@ class AddFolder extends Component {
             body: JSON.stringify(folder),
             headers: {
               'content-type': 'application/json',
+              'Authorization': 'Bearer 80d28d84-9be5-421f-9188-df9da5c49d36'
             }
           })
             .then(res => {

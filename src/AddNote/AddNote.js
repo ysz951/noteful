@@ -75,7 +75,8 @@ class AddNote extends Component {
         fetch(`${config.API_ENDPOINT}/notes`, {
             method: 'POST',
             headers: {
-              'content-type': 'application/json'
+              'content-type': 'application/json',
+              'Authorization': 'Bearer 80d28d84-9be5-421f-9188-df9da5c49d36'
             },
             body: JSON.stringify(newNote),
             })

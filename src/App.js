@@ -26,7 +26,8 @@ class App extends Component {
     fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Authorization': 'Bearer 80d28d84-9be5-421f-9188-df9da5c49d36'
       },
     })
       .then(res => {
@@ -34,20 +35,27 @@ class App extends Component {
           return res.json().then(error => Promise.reject(error))
         }
       })
+      .then(res => {
+        const newNotes = this.state.notes.filter(note => note.id !== noteId);
+        this.setState({
+          notes: newNotes,
+        })
+      })
       .catch(error => {
         alert("Something went wrong, please try again later.")
+        return
       })
-    const newNotes = this.state.notes.filter(note => note.id !== noteId);
-    this.setState({
-      notes: newNotes,
-    })
-
+      
   }
 
   componentDidMount() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/notes`),
-      fetch(`${config.API_ENDPOINT}/folders`),
+      fetch(`${config.API_ENDPOINT}/notes`, {
+        headers: new Headers({'Authorization': 'Bearer 80d28d84-9be5-421f-9188-df9da5c49d36'})
+      }),
+      fetch(`${config.API_ENDPOINT}/folders`, {
+        headers: new Headers({'Authorization': 'Bearer 80d28d84-9be5-421f-9188-df9da5c49d36'})
+      }),
     ])
     .then(([notesRes, foldersRes]) => {
       if (!notesRes.ok)
