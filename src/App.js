@@ -27,7 +27,7 @@ class App extends Component {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
-        'Authorization': 'Bearer 80d28d84-9be5-421f-9188-df9da5c49d36'
+        'Authorization': `Bearer ${config.API_KEY}`
       },
     })
       .then(res => {
@@ -51,10 +51,10 @@ class App extends Component {
   componentDidMount() {
     Promise.all([
       fetch(`${config.API_ENDPOINT}/notes`, {
-        headers: new Headers({'Authorization': 'Bearer 80d28d84-9be5-421f-9188-df9da5c49d36'})
+        headers: new Headers({'Authorization': `Bearer ${config.API_KEY}`})
       }),
       fetch(`${config.API_ENDPOINT}/folders`, {
-        headers: new Headers({'Authorization': 'Bearer 80d28d84-9be5-421f-9188-df9da5c49d36'})
+        headers: new Headers({'Authorization': `Bearer ${config.API_KEY}`})
       }),
     ])
     .then(([notesRes, foldersRes]) => {
@@ -82,7 +82,6 @@ class App extends Component {
 
 
   render(){
-
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
