@@ -1,9 +1,13 @@
 
-export const validateName = Name => {
+export const isAlpha = ch => {
+    return /^[A-Za-z]{1,1}$/.test(ch);
+}
+
+export const validateName = (Name, isAlpha) => {
     const name = Name.value.trim().split(/[ ]+/).filter(Boolean).join(' ');
-    const isAlpha = function(ch){
-        return /^[A-Za-z]{1,1}$/.test(ch);
-    }
+    // const isAlpha = function(ch){
+    //     return /^[A-Za-z]{1,1}$/.test(ch);
+    // }
     if (name.length === 0) {
     return "Name is required";
     } else if (name.length < 3) {

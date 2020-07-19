@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 import ValidationError from '../ValidationError/ValidationError';
 import PropTypes from 'prop-types';
-import {validateName, validateContent, formatName} from '../ValidationHelper';
+import {validateName, validateContent, isAlpha, formatName} from '../ValidationHelper';
 import config from '../config';
 
 class AddNote extends Component {
@@ -99,6 +99,7 @@ class AddNote extends Component {
         const {folders} = this.context;
         const nameError = validateName;
         const contentError = validateContent;
+        const alphaCheck = isAlpha;
         const nameRep = this.state.nameRep? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
          return (
             <>
@@ -132,7 +133,7 @@ class AddNote extends Component {
                         />
                     </div>
                     {this.state.name.touched && (
-                        <ValidationError id="noteNameError" message={nameError(this.state.name)} />
+                        <ValidationError id="noteNameError" message={nameError(this.state.name, alphaCheck)} />
                     )}
                     {nameRep}
                     <div className="contentGroup">
@@ -171,7 +172,7 @@ class AddNote extends Component {
                     <div className="submitGroup">
                         <button 
                             type="submit"
-                            disabled={nameError(this.state.name) || contentError(this.state.content)} 
+                            disabled={nameError(this.state.name, alphaCheck) || contentError(this.state.content)} 
                         >
                             OK
                         </button>
