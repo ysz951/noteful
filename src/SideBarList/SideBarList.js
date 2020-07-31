@@ -12,7 +12,10 @@ class SideBarList extends Component {
         folderId: "",
     };
     static propTypes ={
-        folderId: PropTypes.string.isRequired,
+        folderId: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string,
+        ]).isRequired,
         history: PropTypes.shape({
             push: PropTypes.func,
           }).isRequired,
@@ -24,7 +27,7 @@ class SideBarList extends Component {
         return (
             <nav className="sideBar mainContentLeft">
                 <ul className="sideBarList">
-                    {folders.map((folder, i) =>  folder.id === folderId ? 
+                    {folders.map((folder, i) =>  folder.id === Number(folderId) ? 
                         <li key = {i} className="sideBarSelectedItem">
                             <p>{folder.name}</p>
                         </li> :

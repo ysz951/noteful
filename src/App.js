@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   deleteNote = noteId => {
-    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+    fetch(`${config.API_ENDPOINT}/api/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
@@ -50,10 +50,10 @@ class App extends Component {
 
   componentDidMount() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/notes`, {
+      fetch(`${config.API_ENDPOINT}/api/notes`, {
         headers: new Headers({'Authorization': `Bearer ${config.API_KEY}`})
       }),
-      fetch(`${config.API_ENDPOINT}/folders`, {
+      fetch(`${config.API_ENDPOINT}/api/folders`, {
         headers: new Headers({'Authorization': `Bearer ${config.API_KEY}`})
       }),
     ])

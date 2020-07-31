@@ -55,7 +55,8 @@ class AddNote extends Component {
         const noteName = formatName(name.value);
 
         for (let note of this.context.notes){
-            if (note.name === noteName && note.folderId === folderId ){
+            if (note.name === noteName){
+            // if (note.name === noteName && note.folderid === Number(folderId) ){
                 this.setState(
                     this.name.current.focus(),
                 );
@@ -69,10 +70,10 @@ class AddNote extends Component {
         const newNote = {
             name: noteName,
             content: this.state.content.value,
-            folderId: folderId ,
+            folderid: folderId ,
             modified: new Date(),
         }
-        fetch(`${config.API_ENDPOINT}/notes`, {
+        fetch(`${config.API_ENDPOINT}/api/notes`, {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
@@ -99,9 +100,10 @@ class AddNote extends Component {
         const {history} = this.props;
         const {folders} = this.context;
         const nameError = validateName;
-        const contentError = validateContent;
+        // const contentError = validateContent;
         const alphaCheck = isAlpha;
-        const nameRep = this.state.nameRep? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
+        // const nameRep = this.state.nameRep? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
+        const nameRep = this.state.nameRep? <p className="error">This note name has already been used. Try another name.</p> : "";
          return (
             <>
             <nav className="mainContentLeft addFolderNav">
@@ -149,13 +151,14 @@ class AddNote extends Component {
                             aria-required="true"
                             aria-describedby="folderContentError"
                             aria-invalid="false"
-                            required
+                            // required
                             onChange={e => this.updateContent(e.target.value)}
                         />
                     </div>
-                    {this.state.content.touched && (
+                    {/* cotent validation */}
+                    {/* {this.state.content.touched && (
                         <ValidationError id ="folderContentError" message={contentError(this.state.content)} />
-                    )}
+                    )} */}
                     
                     <div className='field'>
                         <label htmlFor='note-folder-select'>
@@ -173,7 +176,8 @@ class AddNote extends Component {
                     <div className="submitGroup">
                         <button 
                             type="submit"
-                            disabled={nameError(this.state.name, alphaCheck) || contentError(this.state.content)} 
+                            disabled={nameError(this.state.name, alphaCheck)} 
+                            // disabled={nameError(this.state.name, alphaCheck) || contentError(this.state.content)} 
                         >
                             OK
                         </button>

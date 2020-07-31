@@ -49,17 +49,17 @@ class MainContent extends Component {
                 <Route
                     path='/note/:noteId'
                     render={(routerProps) => {
-                        const note= notes.find(item => item.id === routerProps.match.params.noteId) || {};
-                        const folder = folders.find(item => item.id === note.folderId) || {};
+                        const note= notes.find(item => item.id === Number(routerProps.match.params.noteId)) || {};
+                        const folder = folders.find(item => item.id === note.folderid) || {};
                         return (
                             <>
                                 <ComponentError sec="Selected Note-Folder">
-                                    <SideBarSelectedList folder={folder}  history={routerProps.history}/>
+                                    <SideBarSelectedList folder = {folder}  history = {routerProps.history}/>
                                 </ComponentError>
                                 <ComponentError sec="Selected Note">
                                     <MainNoteSelectedList 
-                                        note={notes.find(item => item.id === routerProps.match.params.noteId)} 
-                                        history={routerProps.history}
+                                        note = {note} 
+                                        history = {routerProps.history}
                                     />
                                 </ComponentError>
                             </>

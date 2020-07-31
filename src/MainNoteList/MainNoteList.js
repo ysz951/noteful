@@ -10,7 +10,10 @@ class MainNoteList extends Component {
         history: {},
     };
     static propTypes ={
-        folderId: PropTypes.string.isRequired,
+        folderId: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string,
+        ]).isRequired,
         history: PropTypes.shape({
             push: PropTypes.func,
           }).isRequired,
@@ -18,15 +21,18 @@ class MainNoteList extends Component {
     static contextType = FolderNoteContext;
     render(){
         const {folderId, history} = this.props;
+        // console.log(folderId)
         const {notes} = this.context;
+        
         return (
             <main className="mainNote mainContentRight">
                 <ul className="mainNoteList">
-                    {notes.map((note,i) => folderId ? 
-                        note.folderId === folderId ? 
+                    {notes.map((note,i) => {
+                        return folderId ? 
+                        note.folderid === Number(folderId) ? 
                         <MainNoteItem key={i} note={note}/> : 
                         "" : 
-                        <MainNoteItem key={i} note={note}/>)}
+                    <MainNoteItem key={i} note={note}/>})}
                 </ul>
                 <button className="addNote" type="button" onClick={() => history.push("/add-note")}>
                     <FontAwesomeIcon className="addNoteIcon"icon={faPlus }/>
