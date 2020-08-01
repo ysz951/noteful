@@ -31,6 +31,8 @@ class SideBarList extends Component {
                         return folder.id === Number(folderId) ? 
                         <li key = {i} className="sideBarSelectedItem">
                             <div className="folderGroup">
+                            
+                            <p className="folderName">{folder.name}</p>
                             <button 
                                 className="deleteFolder" 
                                 onClick={() => deleteFolder(folder.id)}
@@ -38,11 +40,13 @@ class SideBarList extends Component {
                             >
                                 <FontAwesomeIcon icon={faTimes}/>
                             </button>
-                            <p className="folderName">{folder.name}</p>
                             </div>
                         </li> :
                         <li key = {i} className="sideBarItem">
                             <div className="folderGroup">
+                                <Link className="folderName" to={`/folder/${folder.id}`}>
+                                    {folder.name}
+                                </Link>
                                 <button 
                                     className="deleteFolder" 
                                     onClick={() => deleteFolder(folder.id)}
@@ -50,11 +54,6 @@ class SideBarList extends Component {
                                 >
                                     <FontAwesomeIcon icon={faTimes}/>
                                 </button>
-                                <p className="folderName">
-                                <Link to={`/folder/${folder.id}`}>
-                                    {folder.name}
-                                </Link>
-                                </p>
                             </div>
                         </li>
                     })

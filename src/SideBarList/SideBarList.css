@@ -7,7 +7,7 @@
 }
 
 .sideBarList li {
-    padding:10px 0;
+    
     margin-bottom:15px;
     font-size: 20px;
     /* padding-left: 30%; */
@@ -22,8 +22,8 @@
     .sideBarItem button {
         background-color: rgb(83, 90, 117);
         color: rgb(196, 166, 166)
-    }
-    .sideBarItem button:hover {
+    } 
+     .sideBarItem button:hover {
         color: rgb(63, 58, 58)
     }
 
@@ -55,17 +55,23 @@
     }
 .folderGroup{
     display: flex;
-    align-items: center;
+    flex-direction: row-reverse;
+    /* align-items: center; */
 }
 
 .deleteFolder{
-    width:5%;
+    display: none;
+    width:10%;
     padding: 0;
     border: none;
 }
-
+.folderGroup:hover .deleteFolder {
+    display: inline-block;
+    
+  }
 .folderName{
-    /* margin-right: 20%; */
-    width: 90%;
+    padding:10px 0;
+    width: 80%;
+    padding-right: 10%;
     text-align: center;
 }
