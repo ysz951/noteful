@@ -4,7 +4,7 @@ import './SideBarList.css'
 import {Link } from 'react-router-dom';
 import FolderNoteContext from '../FolderNoteContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 class SideBarList extends Component {
     static defaultProps = {
@@ -32,29 +32,29 @@ class SideBarList extends Component {
                         <li key = {i} className="sideBarSelectedItem">
                             <div className="folderGroup">
                             <button 
-                                className="goBackBtn" 
+                                className="deleteFolder" 
                                 onClick={() => deleteFolder(folder.id)}
                                 type='button'
                             >
-                                <FontAwesomeIcon icon={faPlus}/>
+                                <FontAwesomeIcon icon={faTimes}/>
                             </button>
                             <p className="folderName">{folder.name}</p>
                             </div>
                         </li> :
                         <li key = {i} className="sideBarItem">
                             <div className="folderGroup">
-                            <button 
-                                className="deleteFolder" 
-                                onClick={() => deleteFolder(folder.id)}
-                                type='button'
-                            >
-                                <FontAwesomeIcon icon={faPlus}/>
-                            </button>
-                            <p className="folderName">
-                            <Link to={`/folder/${folder.id}`}>
-                                {folder.name}
-                            </Link>
-                            </p>
+                                <button 
+                                    className="deleteFolder" 
+                                    onClick={() => deleteFolder(folder.id)}
+                                    type='button'
+                                >
+                                    <FontAwesomeIcon icon={faTimes}/>
+                                </button>
+                                <p className="folderName">
+                                <Link to={`/folder/${folder.id}`}>
+                                    {folder.name}
+                                </Link>
+                                </p>
                             </div>
                         </li>
                     })

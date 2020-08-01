@@ -23,4 +23,10 @@
 }
 
 
-
+@media only screen and (max-width: 420px) {
+    /* category list two column */
+    .folderName{
+        font-size: 16px;
+    }
+    
+}

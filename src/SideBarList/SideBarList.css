@@ -19,11 +19,25 @@
     background-color: rgb(83, 90, 117);
     
 }
-
+    .sideBarItem button {
+        background-color: rgb(83, 90, 117);
+        color: rgb(196, 166, 166)
+    }
+    .sideBarItem button:hover {
+        color: rgb(63, 58, 58)
+    }
 
 .sideBarSelectedItem {
     background-color: rgb(63, 71, 100);
 }
+
+    .sideBarSelectedItem button{
+        background-color: rgb(63, 71, 100);
+        color: rgb(196, 166, 166)
+    }
+    .sideBarSelectedItem button:hover{
+        color: rgb(63, 58, 58)
+    }
 
 .addFolder{
     border: none;
@@ -41,13 +55,17 @@
     }
 .folderGroup{
     display: flex;
+    align-items: center;
 }
 
 .deleteFolder{
-    margin-right: 20%;
+    width:5%;
+    padding: 0;
+    border: none;
 }
 
 .folderName{
-    width: 40%;
+    /* margin-right: 20%; */
+    width: 90%;
     text-align: center;
 }

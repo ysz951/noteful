@@ -19,9 +19,7 @@
     color: white
 }
 
-/* .goBackIcon{
-    color: black;
+.selectedFolderName {
+    width: 100%;
+    text-align: center;
 }
-    .goBackIcon:hover{
-        color: white;
-    } */

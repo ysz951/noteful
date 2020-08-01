@@ -22,7 +22,7 @@ class SideBarSelectedList extends Component {
             <nav className="sideBar mainContentLeft">
                 <ul className="sideBarList">
                     <li className="sideBarSelectedItem">
-                        <p>{folder.name}</p>
+                        <p className="selectedFolderName">{folder.name}</p>
                     </li>
                 </ul>
                 <div className="goBack">
