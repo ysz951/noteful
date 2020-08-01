@@ -50,7 +50,7 @@ class MainContent extends Component {
                     path='/note/:noteId'
                     render={(routerProps) => {
                         const note= notes.find(item => item.id === Number(routerProps.match.params.noteId)) || {};
-                        const folder = folders.find(item => item.id === note.folderid) || {};
+                        const folder = folders.find(item => item.id === note.folderId) || {};
                         return (
                             <>
                                 <ComponentError sec="Selected Note-Folder">

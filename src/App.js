@@ -48,6 +48,34 @@ class App extends Component {
       
   }
 
+  deleteFolder = folderId => {
+    fetch(`${config.API_ENDPOINT}/api/folders/${folderId}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${config.API_KEY}`
+      },
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => Promise.reject(error))
+        }
+      })
+      .then(res => {
+        const newNotes = this.state.notes.filter(note => note.folderid !== folderId);
+        const newFolders = this.state.folders.filter(folder => folder.id !== folderId);
+        this.setState({
+          notes: newNotes,
+          folders: newFolders
+        })
+      })
+      .catch(error => {
+        alert("Something went wrong, please try again later.")
+        return
+      })
+      
+  }
+
   componentDidMount() {
     Promise.all([
       fetch(`${config.API_ENDPOINT}/api/notes`, {
@@ -88,6 +116,7 @@ class App extends Component {
       deleteNote: this.deleteNote,
       handleAddFolder: this.handleAddFolder,
       addNote: this.addNote,
+      deleteFolder: this.deleteFolder,
     }
     return (
       

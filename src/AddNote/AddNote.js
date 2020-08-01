@@ -55,22 +55,20 @@ class AddNote extends Component {
         const noteName = formatName(name.value);
 
         for (let note of this.context.notes){
-            if (note.name === noteName){
-            // if (note.name === noteName && note.folderid === Number(folderId) ){
+            if (note.name === noteName && note.folderId === Number(folderId) ){
                 this.setState(
                     this.name.current.focus(),
                 );
                 this.setState({
                     nameRep: true
                 })
-                // alert('This note name has already been used in this folder.\nTry another name or folder.');
                 return
             }
         }
         const newNote = {
             name: noteName,
             content: this.state.content.value,
-            folderid: folderId ,
+            folderId: folderId ,
             modified: new Date(),
         }
         fetch(`${config.API_ENDPOINT}/api/notes`, {
@@ -82,9 +80,9 @@ class AddNote extends Component {
             body: JSON.stringify(newNote),
             })
             .then(res => {
-              if (!res.ok)
-                return res.json().then(e => Promise.reject(e))
-              return res.json()
+                if (!res.ok)
+                    return res.json().then(e => Promise.reject(e))
+                return res.json()
             })
             .then(note => {
               note.modified = note.modified.slice(0,10)
@@ -92,7 +90,7 @@ class AddNote extends Component {
               this.props.history.push(`/folder/${note.folderId}`)
             })
             .catch(error => {
-              alert("Something went wrong, please try again later.")
+                alert("Something went wrong, please try again later.")
             })
         
     }
@@ -102,8 +100,8 @@ class AddNote extends Component {
         const nameError = validateName;
         // const contentError = validateContent;
         const alphaCheck = isAlpha;
-        // const nameRep = this.state.nameRep? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
-        const nameRep = this.state.nameRep? <p className="error">This note name has already been used. Try another name.</p> : "";
+        const nameRep = this.state.nameRep? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
+        // const nameRep = this.state.nameRep? <p className="error">This note name has already been used. Try another name.</p> : "";
          return (
             <>
             <nav className="mainContentLeft addFolderNav">

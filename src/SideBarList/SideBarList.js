@@ -22,23 +22,42 @@ class SideBarList extends Component {
     }
     static contextType = FolderNoteContext;
     render(){
-        const {folderId, history} = this.props;
-        const {folders} = this.context;
+        const { folderId, history } = this.props;
+        const { folders, deleteFolder } = this.context;
         return (
             <nav className="sideBar mainContentLeft">
                 <ul className="sideBarList">
-                    {folders.map((folder, i) =>  folder.id === Number(folderId) ? 
+                    {folders.map((folder, i) =>  {
+                        return folder.id === Number(folderId) ? 
                         <li key = {i} className="sideBarSelectedItem">
-                            <p>{folder.name}</p>
+                            <div className="folderGroup">
+                            <button 
+                                className="goBackBtn" 
+                                onClick={() => deleteFolder(folder.id)}
+                                type='button'
+                            >
+                                <FontAwesomeIcon icon={faPlus}/>
+                            </button>
+                            <p className="folderName">{folder.name}</p>
+                            </div>
                         </li> :
                         <li key = {i} className="sideBarItem">
-                            <p>
+                            <div className="folderGroup">
+                            <button 
+                                className="deleteFolder" 
+                                onClick={() => deleteFolder(folder.id)}
+                                type='button'
+                            >
+                                <FontAwesomeIcon icon={faPlus}/>
+                            </button>
+                            <p className="folderName">
                             <Link to={`/folder/${folder.id}`}>
                                 {folder.name}
                             </Link>
                             </p>
+                            </div>
                         </li>
-                    )
+                    })
                     }
                 </ul>
                 <button className="addFolder" type="button" onClick={() => history.push("/add-folder")}>
