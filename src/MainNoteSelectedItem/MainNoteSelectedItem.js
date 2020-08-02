@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import FolderNoteContext from '../FolderNoteContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTrashAlt} from '@fortawesome/free-regular-svg-icons';
-
 function MainNoteSelectedItem(props){
     const {note, goBack}=props;
         return(
@@ -17,7 +16,7 @@ function MainNoteSelectedItem(props){
                                     {note.name}
                                 </h2>
                                 <br/>
-                                <p>Modified <span>&ensp;</span> <span>{note.modified}</span></p> 
+                                <p>Modified <span>&ensp;</span> <span>{note.modified}</span></p>
                             </div>
                             <div className="Delete">
                                 <button 

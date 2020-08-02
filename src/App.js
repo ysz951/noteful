@@ -47,7 +47,14 @@ class App extends Component {
       })
       
   }
-
+  updateNote = newNote => {
+    const newNotes = [...this.state.notes]
+    const i = newNotes.findIndex(note => note.id === newNote.id)
+    newNotes[i] = newNote
+    this.setState({
+      notes: newNotes
+    })
+  }
   deleteFolder = folderId => {
     fetch(`${config.API_ENDPOINT}/api/folders/${folderId}`, {
       method: 'DELETE',
@@ -117,6 +124,7 @@ class App extends Component {
       handleAddFolder: this.handleAddFolder,
       addNote: this.addNote,
       deleteFolder: this.deleteFolder,
+      updateNote: this.updateNote,
     }
     return (
       

@@ -115,11 +115,14 @@ class AddFolder extends Component {
                         />
                     </div>
                     {this.state.name.touched && (
-                        <ValidationError id="folderNameError" message={nameError(this.state.name, alphaCheck)} />
+                        <ValidationError 
+                          id="folderNameError" 
+                          message={nameError(this.state.name.value, alphaCheck)} 
+                        />
                     )}
                     {nameRep}
                     <div className="submitGroup">
-                        <button type="submit" disabled={nameError(this.state.name, alphaCheck)}>
+                        <button type="submit" disabled={nameError(this.state.name.value, alphaCheck)}>
                             OK
                         </button>
                     </div>

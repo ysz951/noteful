@@ -4,7 +4,7 @@ export const isAlpha = ch => {
 }
 
 export const validateName = (Name, isAlpha) => {
-    const name = Name.value.trim().split(/[ ]+/).filter(Boolean).join(' ');
+    const name = Name.trim().split(/[ ]+/).filter(Boolean).join(' ');
     // const isAlpha = function(ch){
     //     return /^[A-Za-z]{1,1}$/.test(ch);
     // }

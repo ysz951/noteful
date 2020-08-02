@@ -7,6 +7,7 @@ const FolderNoteContext = React.createContext({
     handleAddFolder: () => {},
     addNote: () => {},
     deleteFolder: () => {},
+    updateNote: () => {},
 })
 
 export default FolderNoteContext

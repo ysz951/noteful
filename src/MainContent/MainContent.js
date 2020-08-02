@@ -9,6 +9,7 @@ import './MainContent.css';
 import ComponentError from '../ComponentError';
 import AddFolder from '../AddFolder/AddFolder'
 import AddNote from '../AddNote/AddNote'
+import EditNote from '../EditNote/EditNote'
 class MainContent extends Component {
     static contextType = FolderNoteContext;
     render(){
@@ -80,6 +81,23 @@ class MainContent extends Component {
                         <ComponentError sec="Add Note">
                             <AddNote history={routerProps.history}/>
                         </ComponentError>
+                    }
+                />
+                <Route
+                    path='/edit-note/:noteId'
+                    render={(routerProps) => 
+                        {
+                            const note= notes.find(item => item.id === Number(routerProps.match.params.noteId)) || {};
+                            return (
+                                <ComponentError sec="Edit Note">
+                                    <EditNote
+                                        history = {routerProps.history} 
+                                        noteId = {routerProps.match.params.noteId}
+                                        folderId = {note.folderId}
+                                    />
+                                </ComponentError>
+                            )
+                        }
                     }
                 />
             </div>

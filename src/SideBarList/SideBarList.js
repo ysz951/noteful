@@ -31,15 +31,14 @@ class SideBarList extends Component {
                         return folder.id === Number(folderId) ? 
                         <li key = {i} className="sideBarSelectedItem">
                             <div className="folderGroup">
-                            
-                            <p className="folderName">{folder.name}</p>
-                            <button 
-                                className="deleteFolder" 
-                                onClick={() => deleteFolder(folder.id)}
-                                type='button'
-                            >
-                                <FontAwesomeIcon icon={faTimes}/>
-                            </button>
+                                <p className="folderName">{folder.name}</p>
+                                <button 
+                                    className="deleteFolder" 
+                                    onClick={() => deleteFolder(folder.id)}
+                                    type='button'
+                                >
+                                    <FontAwesomeIcon icon={faTimes}/>
+                                </button>
                             </div>
                         </li> :
                         <li key = {i} className="sideBarItem">
