@@ -9,7 +9,7 @@ import {validateName, isAlpha, formatName} from '../ValidationHelper';
 import config from '../config';
 
 class EditNote extends Component {
-    constructor(props){
+    constructor(){
         super();
         this.state = {
             name: {
@@ -68,6 +68,7 @@ class EditNote extends Component {
     }
 
     updateContent(content){
+        console.log(content)
         this.setState({content: {value: content, touched: true}});
     }
     handleSubmit = e => {
@@ -103,7 +104,7 @@ class EditNote extends Component {
             modified: modified.join('-'),
             folderId: Number(folderId),
         }
-
+        console.log(newNotes)
         fetch(bookmarkLink, {
           method: 'PATCH',
           body: JSON.stringify(bookmark),
@@ -185,7 +186,7 @@ class EditNote extends Component {
                             aria-invalid="false"
                             defaultValue = {this.state.content.value}
                             // required
-                            onChange={e => this.updateContent(e.target.value)}
+                            onKeyUp={e => this.updateContent(e.target.value)}
                         />
                     </div>
                     {/* cotent validation */}

@@ -149,7 +149,7 @@ class AddNote extends Component {
                             aria-describedby="folderContentError"
                             aria-invalid="false"
                             // required
-                            onChange={e => this.updateContent(e.target.value)}
+                            onKeyUp={e => this.updateContent(e.target.value)}
                         />
                     </div>
                     {/* cotent validation */}
