@@ -40,7 +40,7 @@ class EditFolder extends Component {
         });
     }
     componentDidMount() {
-        fetch(`${config.API_ENDPOINT}/api/folders/${this.props.folderId}`, {
+        fetch(`${config.API_ENDPOINT}/folders/${this.props.folderId}`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -81,7 +81,7 @@ class EditFolder extends Component {
             name: folderName
         }
         
-        fetch(`${config.API_ENDPOINT}/api/folders/${this.props.folderId}`, {
+        fetch(`${config.API_ENDPOINT}/folders/${this.props.folderId}`, {
             method: 'PATCH',
             body: JSON.stringify(folder),
             headers: {

@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   deleteNote = noteId => {
-    fetch(`${config.API_ENDPOINT}/api/notes/${noteId}`, {
+    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
@@ -56,7 +56,7 @@ class App extends Component {
     })
   }
   deleteFolder = folderId => {
-    fetch(`${config.API_ENDPOINT}/api/folders/${folderId}`, {
+    fetch(`${config.API_ENDPOINT}/folders/${folderId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
@@ -93,10 +93,10 @@ class App extends Component {
   }
   componentDidMount() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/api/notes`, {
+      fetch(`${config.API_ENDPOINT}/notes`, {
         headers: new Headers({'Authorization': `Bearer ${config.API_KEY}`})
       }),
-      fetch(`${config.API_ENDPOINT}/api/folders`, {
+      fetch(`${config.API_ENDPOINT}/folders`, {
         headers: new Headers({'Authorization': `Bearer ${config.API_KEY}`})
       }),
     ])

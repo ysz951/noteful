@@ -37,7 +37,7 @@ class EditNote extends Component {
 
     static contextType = FolderNoteContext;
     componentDidMount() {
-        fetch(`${config.API_ENDPOINT}/api/notes/${this.props.noteId}`, {
+        fetch(`${config.API_ENDPOINT}/notes/${this.props.noteId}`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -72,7 +72,7 @@ class EditNote extends Component {
     }
     handleSubmit = e => {
         e.preventDefault()
-        const bookmarkLink = `${config.API_ENDPOINT}/api/notes/${this.props.noteId}`
+        const bookmarkLink = `${config.API_ENDPOINT}/notes/${this.props.noteId}`
         const noteName = formatName(this.state.name.value);
         const folderId = e.target['note-folder-id'].value;
         for (let note of this.context.notes){
