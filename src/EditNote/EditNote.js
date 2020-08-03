@@ -126,7 +126,7 @@ class EditNote extends Component {
           .then(data => {
             this.context.updateNote(newNotes)
             // this.props.history.pop()
-            this.props.history.push('/')
+            this.props.history.push(`/note/${this.props.noteId}`)
             // console.log(data)
           })
           .catch(error => {

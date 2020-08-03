@@ -10,6 +10,7 @@ import ComponentError from '../ComponentError';
 import AddFolder from '../AddFolder/AddFolder'
 import AddNote from '../AddNote/AddNote'
 import EditNote from '../EditNote/EditNote'
+import EditFolder from '../EditFolder/EditFolder'
 class MainContent extends Component {
     static contextType = FolderNoteContext;
     render(){
@@ -94,6 +95,21 @@ class MainContent extends Component {
                                         history = {routerProps.history} 
                                         noteId = {routerProps.match.params.noteId}
                                         folderId = {note.folderId}
+                                    />
+                                </ComponentError>
+                            )
+                        }
+                    }
+                />
+                <Route
+                    path='/edit-folder/:folderId'
+                    render={(routerProps) => 
+                        {
+                            return (
+                                <ComponentError sec="Edit Folder">
+                                    <EditFolder
+                                        history = {routerProps.history} 
+                                        folderId = {routerProps.match.params.folderId}
                                     />
                                 </ComponentError>
                             )

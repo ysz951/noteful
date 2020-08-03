@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faEdit } from '@fortawesome/free-solid-svg-icons';
 import './SideBarSelectedList.css'
 class SideBarSelectedList extends Component {
     static defaultProps = {
@@ -21,8 +21,19 @@ class SideBarSelectedList extends Component {
         return (
             <nav className="sideBar mainContentLeft">
                 <ul className="sideBarList">
+                        
                     <li className="sideBarSelectedItem">
-                        <p className="selectedFolderName">{folder.name}</p>
+                        <div className="folderGroup">
+                            <p className="selectedFolderName">{folder.name}</p>
+                            <button 
+                                className="folderControl" 
+                                onClick={() => {history.push(`/edit-folder/${folder.id}`)}}
+                                type='button'
+                            >
+                                <FontAwesomeIcon icon={faEdit}/>
+                            </button>
+                        </div>
+                        {/* <p className="selectedFolderName">{folder.name}</p> */}
                     </li>
                 </ul>
                 <div className="goBack">

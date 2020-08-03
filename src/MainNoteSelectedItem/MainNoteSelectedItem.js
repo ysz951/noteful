@@ -1,10 +1,11 @@
 import React from 'react';
+import './MainNoteSelectedItem.css'
 import PropTypes from 'prop-types';
 import FolderNoteContext from '../FolderNoteContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faTrashAlt} from '@fortawesome/free-regular-svg-icons';
+import { faTrashAlt, faEdit } from '@fortawesome/free-regular-svg-icons';
 function MainNoteSelectedItem(props){
-    const {note, goBack}=props;
+    const { note, history }=props;
         return(
             <FolderNoteContext.Consumer>
                 {(context) => {
@@ -15,13 +16,22 @@ function MainNoteSelectedItem(props){
                                 <h2 className="noteName">
                                     {note.name}
                                 </h2>
-                                <br/>
+                                <button
+                                    className = "editNoteBtn" 
+                                    onClick={() => {
+                                        history.push(`/edit-note/${note.id}`)
+                                    }}
+                                    type='button'
+                                >
+                                    <FontAwesomeIcon icon={faEdit}/>
+                                </button>
+                                
                                 <p>Modified <span>&ensp;</span> <span>{note.modified}</span></p>
                             </div>
                             <div className="Delete">
                                 <button 
                                     onClick={() => {
-                                        goBack();
+                                        history.goBack();
                                         deleteNote(note.id);
                                     }}
                                     type='button'
@@ -38,11 +48,14 @@ function MainNoteSelectedItem(props){
 }
 MainNoteSelectedItem.defaultProps = {
     note: {},
-    goBack: () => {},
+    history: {},
 };
 
 MainNoteSelectedItem.propTypes ={
-    goBack: PropTypes.func.isRequired,
+    history: PropTypes.shape({
+        goBack: PropTypes.func,
+        push: PropTypes.func,
+    }).isRequired,
     note: PropTypes.shape({
         name: PropTypes.string.isRequired,
         id: PropTypes.oneOfType([

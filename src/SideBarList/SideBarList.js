@@ -4,7 +4,7 @@ import './SideBarList.css'
 import {Link } from 'react-router-dom';
 import FolderNoteContext from '../FolderNoteContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTimes, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 class SideBarList extends Component {
     static defaultProps = {
@@ -31,27 +31,41 @@ class SideBarList extends Component {
                         return folder.id === Number(folderId) ? 
                         <li key = {i} className="sideBarSelectedItem">
                             <div className="folderGroup">
-                                <p className="folderName">{folder.name}</p>
                                 <button 
-                                    className="deleteFolder" 
+                                    className="folderControl" 
                                     onClick={() => deleteFolder(folder.id)}
                                     type='button'
                                 >
                                     <FontAwesomeIcon icon={faTimes}/>
                                 </button>
+                                <p className="folderName">{folder.name}</p>
+                                <button 
+                                    className="folderControl" 
+                                    onClick={() => {history.push(`/edit-folder/${folder.id}`)}}
+                                    type='button'
+                                >
+                                    <FontAwesomeIcon icon={faEdit}/>
+                                </button>
                             </div>
                         </li> :
                         <li key = {i} className="sideBarItem">
                             <div className="folderGroup">
-                                <Link className="folderName" to={`/folder/${folder.id}`}>
-                                    {folder.name}
-                                </Link>
                                 <button 
-                                    className="deleteFolder" 
+                                    className="folderControl" 
                                     onClick={() => deleteFolder(folder.id)}
                                     type='button'
                                 >
                                     <FontAwesomeIcon icon={faTimes}/>
+                                </button>
+                                <Link className="folderName" to={`/folder/${folder.id}`}>
+                                    {folder.name}
+                                </Link>
+                                <button 
+                                    className="folderControl" 
+                                    onClick={() => {history.push(`/edit-folder/${folder.id}`)}}
+                                    type='button'
+                                >
+                                    <FontAwesomeIcon icon={faEdit}/>
                                 </button>
                             </div>
                         </li>

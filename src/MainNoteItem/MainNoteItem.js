@@ -4,7 +4,7 @@ import './MainNoteItem.css';
 import {Link} from 'react-router-dom';
 import FolderNoteContext from '../FolderNoteContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faTrashAlt} from '@fortawesome/free-regular-svg-icons';
+import {faTrashAlt,  faEdit } from '@fortawesome/free-regular-svg-icons';
 
 export default function MainNoteItem(props){
     
@@ -12,9 +12,8 @@ export default function MainNoteItem(props){
         
         <FolderNoteContext.Consumer>
             {(context) => {
-                const {note}=props;
-                const {deleteNote} = context
-
+                const { note, history }=props;
+                const { deleteNote } = context
                 return (
                     <li className="mainNoteItem">
                         <div className="Note"> 
@@ -23,7 +22,15 @@ export default function MainNoteItem(props){
                                 {note.name}
                             </Link>
                             </h2>
-                            <br/>
+                            <button
+                                    className = "editNoteBtn" 
+                                    onClick={() => {
+                                        history.push(`/edit-note/${note.id}`)
+                                    }}
+                                    type='button'
+                                >
+                                    <FontAwesomeIcon icon={faEdit}/>
+                                </button>
                             <p>Modified <span>&ensp;</span> <span>{note.modified}</span></p> 
                             {/* <p>{format(date, 'Do MMM YYYY')}</p> */}
                             

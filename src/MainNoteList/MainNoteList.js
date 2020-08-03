@@ -16,6 +16,7 @@ class MainNoteList extends Component {
         ]).isRequired,
         history: PropTypes.shape({
             push: PropTypes.func,
+            goBack: PropTypes.func,
           }).isRequired,
     }
     static contextType = FolderNoteContext;
@@ -29,9 +30,9 @@ class MainNoteList extends Component {
                     {notes.map((note,i) => {
                         return folderId ? 
                         note.folderId === Number(folderId) ? 
-                        <MainNoteItem key={i} note={note}/> : 
+                        <MainNoteItem key={i} note={note} history = {history}/> : 
                         "" : 
-                        <MainNoteItem key={i} note={note}/>
+                        <MainNoteItem key={i} note={note} history = {history}/>
                     })}
                 </ul>
                 <button className="addNote" type="button" onClick={() => history.push("/add-note")}>

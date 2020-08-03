@@ -69,8 +69,10 @@ class App extends Component {
         }
       })
       .then(res => {
-        const newNotes = this.state.notes.filter(note => note.folderid !== folderId);
+        const newNotes = this.state.notes.filter(note => note.folderId !== folderId);
         const newFolders = this.state.folders.filter(folder => folder.id !== folderId);
+        console.log(newNotes)
+        console.log(newFolders)
         this.setState({
           notes: newNotes,
           folders: newFolders
@@ -78,11 +80,17 @@ class App extends Component {
       })
       .catch(error => {
         alert("Something went wrong, please try again later.")
-        return
       })
       
   }
-
+  updateFolder = newFolder => {
+    const newFolders = [...this.state.folders]
+    const i = newFolders.findIndex(folder => folder.id === newFolder.id)
+    newFolders[i] = newFolder
+    this.setState({
+      folders: newFolders
+    })
+  }
   componentDidMount() {
     Promise.all([
       fetch(`${config.API_ENDPOINT}/api/notes`, {
@@ -125,6 +133,7 @@ class App extends Component {
       addNote: this.addNote,
       deleteFolder: this.deleteFolder,
       updateNote: this.updateNote,
+      updateFolder: this.updateFolder,
     }
     return (
       

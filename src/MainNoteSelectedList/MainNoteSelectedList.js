@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './MainNoteSelectedList.css'
 import MainNoteSelectedItem from '../MainNoteSelectedItem/MainNoteSelectedItem'
-import { Link } from 'react-router-dom';
+
 class MainNoteSelectedList extends Component {
     static defaultProps = {
         note: {},
@@ -11,14 +11,11 @@ class MainNoteSelectedList extends Component {
     static propTypes ={
         history: PropTypes.shape({
             goBack: PropTypes.func,
+            push: PropTypes.func,
         }).isRequired,
         note: PropTypes.shape({
             content: PropTypes.string,
         }).isRequired,
-    }
-
-    goBack = () => {
-        this.props.history.goBack();
     }
 
     render(){
@@ -26,16 +23,16 @@ class MainNoteSelectedList extends Component {
         return (
             <main className="mainNote mainContentRight">
                 <ul className='mainNoteList'>
-                    <MainNoteSelectedItem note={note} goBack={this.goBack}/>
+                    <MainNoteSelectedItem note={note} history={history}/>
                     <li className="NoteContent">{note.content}</li>
-                    <li>
-                        <button onClick = {() => {
+                    {/* <li>
+                        <button className="editNote" onClick = {() => {
                                 history.push(`/edit-note/${note.id}`)
                             }}
                         >
                             Edit
                         </button>
-                    </li>
+                    </li> */}
                 </ul>
             </main>
         );

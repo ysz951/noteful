@@ -28,5 +28,7 @@
     .folderName{
         font-size: 16px;
     }
-    
+    .selectedFolderName{
+        font-size: 16px;
+    }
 }
