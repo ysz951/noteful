@@ -104,16 +104,12 @@ class MainContent extends Component {
                 <Route
                     path='/edit-folder/:folderId'
                     render={(routerProps) => 
-                        {
-                            return (
-                                <ComponentError sec="Edit Folder">
-                                    <EditFolder
-                                        history = {routerProps.history} 
-                                        folderId = {routerProps.match.params.folderId}
-                                    />
-                                </ComponentError>
-                            )
-                        }
+                        <ComponentError sec="Edit Folder">
+                            <EditFolder
+                                history = {routerProps.history} 
+                                folderId = {routerProps.match.params.folderId}
+                            />
+                        </ComponentError> 
                     }
                 />
             </div>

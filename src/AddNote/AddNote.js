@@ -101,7 +101,6 @@ class AddNote extends Component {
         // const contentError = validateContent;
         const alphaCheck = isAlpha;
         const nameRep = this.state.nameRep? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
-        // const nameRep = this.state.nameRep? <p className="error">This note name has already been used. Try another name.</p> : "";
          return (
             <>
             <nav className="mainContentLeft addFolderNav">

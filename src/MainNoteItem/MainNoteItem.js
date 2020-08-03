@@ -7,9 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTrashAlt,  faEdit } from '@fortawesome/free-regular-svg-icons';
 
 export default function MainNoteItem(props){
-    
     return(
-        
         <FolderNoteContext.Consumer>
             {(context) => {
                 const { note, history }=props;

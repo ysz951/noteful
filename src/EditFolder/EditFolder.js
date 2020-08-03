@@ -70,7 +70,6 @@ class EditFolder extends Component {
             if (folder.name === folderName && folder.id !== Number(this.props.folderId)){
               this.setState(this.name.current.focus());
               this.setState({nameRep: true})
-              // alert('This note name has already been used in this folder.\nTry another name or folder.');
               return
             }
         }
@@ -81,8 +80,7 @@ class EditFolder extends Component {
             id: Number(this.props.folderId),
             name: folderName
         }
-        // console.log(folder)
-        // return
+        
         fetch(`${config.API_ENDPOINT}/api/folders/${this.props.folderId}`, {
             method: 'PATCH',
             body: JSON.stringify(folder),
@@ -96,18 +94,15 @@ class EditFolder extends Component {
                 return res.text().then(message => {
                   throw new Error(message)
                 });
-                // return res.json().then(error => Promise.reject(error))
               }
             })
             .then(data => {
               this.context.updateFolder(newFolder)
-              // this.props.history.pop()
               this.props.history.push(`/folder/${this.props.folderId}`)
-              // console.log(data)
             })
             .catch(error => {
               alert(error.message)
-              // this.setState({ error })
+
             })
     }
     render(){

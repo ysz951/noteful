@@ -75,9 +75,6 @@ class EditNote extends Component {
         const bookmarkLink = `${config.API_ENDPOINT}/api/notes/${this.props.noteId}`
         const noteName = formatName(this.state.name.value);
         const folderId = e.target['note-folder-id'].value;
-        // const curFolderId = this.context.notes[Number(this.props.noteId)]
-        // console.log(typeof this.props.folderId)
-        // return
         for (let note of this.context.notes){
             if (note.name === noteName && note.folderId === Number(folderId) && Number(folderId) !== this.props.folderId){
                 this.setState(
@@ -120,18 +117,14 @@ class EditNote extends Component {
               return res.text().then(message => {
                 throw new Error(message)
               });
-              // return res.json().then(error => Promise.reject(error))
             }
           })
           .then(data => {
             this.context.updateNote(newNotes)
-            // this.props.history.pop()
             this.props.history.push(`/note/${this.props.noteId}`)
-            // console.log(data)
           })
           .catch(error => {
             alert(error.message)
-            // this.setState({ error })
           })
       }
     render(){
@@ -141,8 +134,6 @@ class EditNote extends Component {
         // const contentError = validateContent;
         const alphaCheck = isAlpha;
         const nameRep = this.state.nameRep? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
-        // const nameRep = this.state.nameRep? <p className="error">This note name has already been used. Try another name.</p> : "";
-        // console.log(this.state)
 
         return (
             <>
