@@ -9,8 +9,8 @@ import {validateName, formatName, isAlpha} from '../ValidationHelper';
 import config from '../config';
 
 class EditFolder extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       name: {
         value: "",

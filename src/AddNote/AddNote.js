@@ -9,8 +9,8 @@ import {validateName, isAlpha, formatName} from '../ValidationHelper';
 import config from '../config';
 
 class AddNote extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             name: {
                 value: "",

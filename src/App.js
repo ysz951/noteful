@@ -6,9 +6,12 @@ import FolderNoteContext from './FolderNoteContext';
 import config from './config';
 
 class App extends Component {
-  state = {
-    folders: [],
-    notes: [],
+  constructor(props){
+    super(props);
+    this.state = {
+      folders: [],
+      notes: [],
+    }
   }
   handleAddFolder = folder => {
     this.setState({
