@@ -123,7 +123,7 @@ class EditFolder extends Component {
             </button>
             </nav>
             <main className="mainContentRight">
-                <h2>Add a folder</h2>
+                <h2>Edit folder</h2>
                 <form className="addFolderForm" onSubmit={this.handleSubmit}>
                     <div className="nameGroup">
                         <label htmlFor="name">Name</label>
@@ -150,7 +150,7 @@ class EditFolder extends Component {
                     {nameRep}
                     <div className="submitGroup">
                         <button type="submit" disabled={nameError(this.state.name.value, alphaCheck)}>
-                            OK
+                            Update
                         </button>
                     </div>
                     </form>

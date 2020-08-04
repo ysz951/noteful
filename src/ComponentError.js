@@ -12,7 +12,6 @@ class ComponentError extends Component {
     }
     render() {
         const {sec} = this.props;
-        // console.log(sec)
         if (this.state.hasError) {      
           return (
             <h2>Could not display {sec} part.</h2>

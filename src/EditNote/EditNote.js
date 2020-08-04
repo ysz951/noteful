@@ -146,7 +146,7 @@ class EditNote extends Component {
             </button>
             </nav>
             <main className="mainContentRight">
-                <h2>Add a note</h2>
+                <h2>Edit note</h2>
                 <form className="addNoteForm" onSubmit={this.handleSubmit}>
                     <div className="nameGroup">
                         <label htmlFor="name">Name</label>
@@ -210,7 +210,7 @@ class EditNote extends Component {
                             type="submit"
                             disabled={nameError(this.state.name.value, alphaCheck)} 
                         >
-                            OK
+                            Update
                         </button>
                     </div>
                     </form>
