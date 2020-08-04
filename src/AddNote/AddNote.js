@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 import ValidationError from '../ValidationError/ValidationError';
 import PropTypes from 'prop-types';
-import {validateName, validateContent, isAlpha, formatName} from '../ValidationHelper';
+import {validateName, isAlpha, formatName} from '../ValidationHelper';
 import config from '../config';
 
 class AddNote extends Component {
@@ -98,7 +98,6 @@ class AddNote extends Component {
         const {history} = this.props;
         const {folders} = this.context;
         const nameError = validateName;
-        // const contentError = validateContent;
         const alphaCheck = isAlpha;
         const nameRep = this.state.nameRep? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
          return (
@@ -148,15 +147,9 @@ class AddNote extends Component {
                             aria-required="true"
                             aria-describedby="folderContentError"
                             aria-invalid="false"
-                            // required
                             onKeyUp={e => this.updateContent(e.target.value)}
                         />
                     </div>
-                    {/* cotent validation */}
-                    {/* {this.state.content.touched && (
-                        <ValidationError id ="folderContentError" message={contentError(this.state.content)} />
-                    )} */}
-                    
                     <div className='field'>
                         <label htmlFor='note-folder-select'>
                             Folder
@@ -174,7 +167,6 @@ class AddNote extends Component {
                         <button 
                             type="submit"
                             disabled={nameError(this.state.name.value, alphaCheck)} 
-                            // disabled={nameError(this.state.name, alphaCheck) || contentError(this.state.content)} 
                         >
                             OK
                         </button>

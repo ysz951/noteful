@@ -33,7 +33,6 @@ class SideBarSelectedList extends Component {
                                 <FontAwesomeIcon icon={faEdit}/>
                             </button>
                         </div>
-                        {/* <p className="selectedFolderName">{folder.name}</p> */}
                     </li>
                 </ul>
                 <div className="goBack">

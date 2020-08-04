@@ -25,14 +25,6 @@ class MainNoteSelectedList extends Component {
                 <ul className='mainNoteList'>
                     <MainNoteSelectedItem note={note} history={history}/>
                     <li className="NoteContent">{note.content}</li>
-                    {/* <li>
-                        <button className="editNote" onClick = {() => {
-                                history.push(`/edit-note/${note.id}`)
-                            }}
-                        >
-                            Edit
-                        </button>
-                    </li> */}
                 </ul>
             </main>
         );

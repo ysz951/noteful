@@ -50,7 +50,7 @@ class App extends Component {
   updateNote = newNote => {
     const newNotes = [...this.state.notes]
     const i = newNotes.findIndex(note => note.id === newNote.id)
-    newNotes[i] = newNote
+    newNotes[i] = {...newNotes[i],...newNote}
     this.setState({
       notes: newNotes
     })
@@ -71,8 +71,6 @@ class App extends Component {
       .then(res => {
         const newNotes = this.state.notes.filter(note => note.folderId !== folderId);
         const newFolders = this.state.folders.filter(folder => folder.id !== folderId);
-        console.log(newNotes)
-        console.log(newFolders)
         this.setState({
           notes: newNotes,
           folders: newFolders

@@ -68,7 +68,6 @@ class EditNote extends Component {
     }
 
     updateContent(content){
-        console.log(content)
         this.setState({content: {value: content, touched: true}});
     }
     handleSubmit = e => {
@@ -97,14 +96,13 @@ class EditNote extends Component {
         const reverseDate = US_Date.split('/').reverse();
         const modified = reverseDate.map(item => item.length === 1 ? '0' + item : item);
 
-        const newNotes = {
+        const newNote = {
             id: Number(this.props.noteId),
             name: noteName,
             content: this.state.content.value,
-            modified: modified.join('-'),
             folderId: Number(folderId),
         }
-        console.log(newNotes)
+        
         fetch(bookmarkLink, {
           method: 'PATCH',
           body: JSON.stringify(bookmark),
@@ -121,7 +119,7 @@ class EditNote extends Component {
             }
           })
           .then(data => {
-            this.context.updateNote(newNotes)
+            this.context.updateNote(newNote)
             this.props.history.push(`/note/${this.props.noteId}`)
           })
           .catch(error => {
@@ -132,7 +130,6 @@ class EditNote extends Component {
         const { history } = this.props;
         const {folders} = this.context;
         const nameError = validateName;
-        // const contentError = validateContent;
         const alphaCheck = isAlpha;
         const nameRep = this.state.nameRep? <p className="error">This note name has already been used in this folder. Try another name or folder.</p> : "";
 
@@ -185,15 +182,9 @@ class EditNote extends Component {
                             aria-describedby="folderContentError"
                             aria-invalid="false"
                             defaultValue = {this.state.content.value}
-                            // required
                             onKeyUp={e => this.updateContent(e.target.value)}
                         />
-                    </div>
-                    {/* cotent validation */}
-                    {/* {this.state.content.touched && (
-                        <ValidationError id ="folderContentError" message={contentError(this.state.content)} />
-                    )} */}
-                                     
+                    </div>        
                     <div className='field'>
                         <label htmlFor='note-folder-select'>
                             Folder
@@ -218,7 +209,6 @@ class EditNote extends Component {
                         <button 
                             type="submit"
                             disabled={nameError(this.state.name.value, alphaCheck)} 
-                            // disabled={nameError(this.state.name, alphaCheck) || contentError(this.state.content)} 
                         >
                             OK
                         </button>

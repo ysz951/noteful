@@ -29,9 +29,7 @@ export default function MainNoteItem(props){
                                 >
                                     <FontAwesomeIcon icon={faEdit}/>
                                 </button>
-                            <p>Modified <span>&ensp;</span> <span>{note.modified}</span></p> 
-                            {/* <p>{format(date, 'Do MMM YYYY')}</p> */}
-                            
+                            <p>Modified <span>&ensp;</span> <span>{note.modified}</span></p>               
                         </div>
                         <div className="Delete">
                             <button 
@@ -65,4 +63,4 @@ MainNoteItem.propTypes ={
         ]).isRequired,
     }).isRequired,
 };
-// export default MainNoteItem;
+

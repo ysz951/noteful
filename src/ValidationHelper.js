@@ -5,9 +5,6 @@ export const isAlpha = ch => {
 
 export const validateName = (Name, isAlpha) => {
     const name = Name.trim().split(/[ ]+/).filter(Boolean).join(' ');
-    // const isAlpha = function(ch){
-    //     return /^[A-Za-z]{1,1}$/.test(ch);
-    // }
     if (name.length === 0) {
     return "Name is required";
     } else if (name.length < 3) {
@@ -24,19 +21,6 @@ export const validateName = (Name, isAlpha) => {
         }
     }
 }
-
-export const validateContent = Content =>{
-    const content = Content.value.trim();
-    
-    if (content.length === 0) {
-        return "Content is required";
-    }
-    else if (content.length < 5){
-        return "Content must be at least 5 characters long";
-    }
-
-}
-
 
 export const formatName = name => {
     const nameList = name.split(' ').map(item => item ? (item[0].toUpperCase() + (item[1] ? item.slice(1).toLowerCase(): "")) : "");
